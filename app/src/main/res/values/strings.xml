@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2012 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -406,7 +405,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
 
     <!-- Warning message given to users just before they remove a currently syncing
          group that would also cause all ungrouped contacts to stop syncing.  [CHAR LIMIT=NONE] -->
-    <string name="display_warn_remove_ungrouped">Removing \"<xliff:g id="group" example="Starred">%s</xliff:g>\" from sync will also remove any ungrouped contacts from sync.</string>
+    <string name="display_warn_remove_ungrouped">Removing \"<xliff:g example="Starred" id="group">%s</xliff:g>\" from sync will also remove any ungrouped contacts from sync.</string>
 
     <!-- Displayed in a spinner dialog as user changes to display options are saved -->
     <string name="savingDisplayGroups">Saving display options\u2026</string>
@@ -418,7 +417,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
     <string name="menu_doNotSave">Cancel</string>
 
     <!-- Displayed at the top of the contacts showing the account filter selected  [CHAR LIMIT=64] -->
-    <string name="listAllContactsInAccount">Contacts in <xliff:g id="name" example="abc@gmail.com">%s</xliff:g></string>
+    <string name="listAllContactsInAccount">Contacts in <xliff:g example="abc@gmail.com" id="name">%s</xliff:g></string>
 
     <!-- Displayed at the top of the contacts showing single contact. [CHAR LIMIT=64] -->
     <string name="listCustomView">Contacts in custom view</string>
@@ -444,12 +443,12 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
     <!-- Message shown in a Dialog confirming a user's cancel request toward existing vCard import.
          The argument is file name for the vCard import the user wants to cancel.
          [CHAR LIMIT=128] -->
-    <string name="cancel_import_confirmation_message">Cancel import of <xliff:g id="filename" example="import.vcf">%s</xliff:g>?</string>
+    <string name="cancel_import_confirmation_message">Cancel import of <xliff:g example="import.vcf" id="filename">%s</xliff:g>?</string>
 
     <!-- Message shown in a Dialog confirming a user's cancel request toward existing vCard export.
          The argument is file name for the vCard export the user wants to cancel.
          [CHAR LIMIT=128] -->
-    <string name="cancel_export_confirmation_message">Cancel export of <xliff:g id="filename" example="export.vcf">%s</xliff:g>?</string>
+    <string name="cancel_export_confirmation_message">Cancel export of <xliff:g example="export.vcf" id="filename">%s</xliff:g>?</string>
 
     <!-- Title shown in a Dialog telling users cancel vCard import/export operation is failed. [CHAR LIMIT=40] -->
     <string name="cancel_vcard_import_or_export_failed">Couldn\'t cancel vCard import/export</string>
@@ -508,7 +507,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
     <string name="fail_reason_failed_to_read_files">One or more files couldn\'t be imported (%s).</string>
 
     <!-- The title shown when exporting vCard is successfuly finished [CHAR LIMIT=40] -->
-    <string name="exporting_vcard_finished_title">Finished exporting <xliff:g id="filename" example="export.vcf">%s</xliff:g>.</string>
+    <string name="exporting_vcard_finished_title">Finished exporting <xliff:g example="export.vcf" id="filename">%s</xliff:g>.</string>
 
     <!-- The title shown when exporting vCard has finished successfully but the destination filename could not be resolved. [CHAR LIMIT=NONE] -->
     <string name="exporting_vcard_finished_title_fallback">Finished exporting contacts.</string>
@@ -522,7 +521,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
     <!-- The title shown when exporting vCard is canceled (probably by a user)
          The argument is file name the user canceled importing.
          [CHAR LIMIT=40] -->
-    <string name="exporting_vcard_canceled_title">Exporting <xliff:g id="filename" example="export.vcf">%s</xliff:g> canceled.</string>
+    <string name="exporting_vcard_canceled_title">Exporting <xliff:g example="export.vcf" id="filename">%s</xliff:g> canceled.</string>
 
     <!-- Dialog title shown when the application is exporting contact data outside. [CHAR LIMIT=NONE] -->
     <string name="exporting_contact_list_title">Exporting contact data</string>
@@ -553,7 +552,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
     <!-- Description shown when importing vCard data.
          The argument is the name of a contact which is being read.
          [CHAR LIMIT=20] -->
-    <string name="importing_vcard_description">Importing <xliff:g id="name" example="Joe Due">%s</xliff:g></string>
+    <string name="importing_vcard_description">Importing <xliff:g example="Joe Due" id="name">%s</xliff:g></string>
 
     <!-- Dialog title shown when reading vCard data failed [CHAR LIMIT=40] -->
     <string name="reading_vcard_failed_title">Couldn\'t read vCard data</string>
@@ -565,18 +564,18 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
     <!-- The title shown when reading vCard finished
          The argument is file name the user imported.
          [CHAR LIMIT=40] -->
-    <string name="importing_vcard_finished_title">Finished importing vCard <xliff:g id="filename" example="import.vcf">%s</xliff:g></string>
+    <string name="importing_vcard_finished_title">Finished importing vCard <xliff:g example="import.vcf" id="filename">%s</xliff:g></string>
 
     <!-- The title shown when importing vCard is canceled (probably by a user)
          The argument is file name the user canceled importing.
          [CHAR LIMIT=40] -->
-    <string name="importing_vcard_canceled_title">Importing <xliff:g id="filename" example="import.vcf">%s</xliff:g> canceled</string>
+    <string name="importing_vcard_canceled_title">Importing <xliff:g example="import.vcf" id="filename">%s</xliff:g> canceled</string>
 
     <!-- The message shown when vCard import request is accepted. The system may start that work soon, or do it later
          when there are already other import/export requests.
          The argument is file name the user imported.
          [CHAR LIMIT=40] -->
-    <string name="vcard_import_will_start_message"><xliff:g id="filename" example="import.vcf">%s</xliff:g> will be imported shortly.</string>
+    <string name="vcard_import_will_start_message"><xliff:g example="import.vcf" id="filename">%s</xliff:g> will be imported shortly.</string>
     <!-- The message shown when vCard import request is accepted. The system may start that work soon, or do it later when there are already other import/export requests.
          "The file" is what a user selected for importing.
          [CHAR LIMIT=40] -->
@@ -587,7 +586,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
          when there are already other import/export requests.
          The argument is file name the user exported.
          [CHAR LIMIT=40] -->
-    <string name="vcard_export_will_start_message"><xliff:g id="filename" example="import.vcf">%s</xliff:g> will be exported shortly.</string>
+    <string name="vcard_export_will_start_message"><xliff:g example="import.vcf" id="filename">%s</xliff:g> will be exported shortly.</string>
 
     <!-- The message shown when a vCard export request is accepted but the destination filename could not be resolved. [CHAR LIMIT=NONE] -->
     <string name="vcard_export_will_start_message_fallback">The file will be exported shortly.</string>
@@ -623,7 +622,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
          Second argument is the total number of contacts.
          Third argument is the name of a contact which is being read.
          [CHAR LIMIT=20] -->
-    <string name="progress_notifier_message">Importing <xliff:g id="current_number">%s</xliff:g>/<xliff:g id="total_number">%s</xliff:g>: <xliff:g id="name" example="Joe Due">%s</xliff:g></string>
+    <string name="progress_notifier_message">Importing <xliff:g id="current_number">%s</xliff:g>/<xliff:g id="total_number">%s</xliff:g>: <xliff:g example="Joe Due" id="name">%s</xliff:g></string>
 
     <!-- Action that exports all contacts to a user selected destination. [CHAR LIMIT=25] -->
     <string name="export_to_vcf_file" product="default">Export to .vcf file</string>
@@ -723,7 +722,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
     <string name="listTotalAllContactsZeroStarred">No favorites</string>
 
     <!-- Displayed at the top of the contacts showing the zero total number of contacts visible when a group or account is selected  [CHAR LIMIT=64]-->
-    <string name="listTotalAllContactsZeroGroup">No contacts in <xliff:g id="name" example="Friends">%s</xliff:g></string>
+    <string name="listTotalAllContactsZeroGroup">No contacts in <xliff:g example="Friends" id="name">%s</xliff:g></string>
 
     <!--  The menu item to clear frequents [CHAR LIMIT=30] -->
     <string name="menu_clear_frequents">Clear frequents</string>
@@ -742,10 +741,10 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
     <string name="tab_font_family">sans-serif</string>
 
     <!-- Attribution of a contact status update, when the time of update is unknown -->
-    <string name="contact_status_update_attribution">via <xliff:g id="source" example="Google Talk">%1$s</xliff:g></string>
+    <string name="contact_status_update_attribution">via <xliff:g example="Google Talk" id="source">%1$s</xliff:g></string>
 
     <!-- Attribution of a contact status update, when the time of update is known -->
-    <string name="contact_status_update_attribution_with_date"><xliff:g id="date" example="3 hours ago">%1$s</xliff:g> via <xliff:g id="source" example="Google Talk">%2$s</xliff:g></string>
+    <string name="contact_status_update_attribution_with_date"><xliff:g example="3 hours ago" id="date">%1$s</xliff:g> via <xliff:g example="Google Talk" id="source">%2$s</xliff:g></string>
 
     <!-- Font family used when drawing letters for letter tile avatars.
          Do not translate. -->
@@ -788,11 +787,11 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
 
     <!-- String used to represent the total number of characters entered for a call subject,
          compared to the character limit.  Example: 2 / 64 -->
-    <string name="call_subject_limit"><xliff:g id="count" example="4">%1$s</xliff:g> / <xliff:g id="limit" example="64">%2$s</xliff:g></string>
+    <string name="call_subject_limit"><xliff:g example="4" id="count">%1$s</xliff:g> / <xliff:g example="64" id="limit">%2$s</xliff:g></string>
 
     <!-- String used to build a phone number bype and phone number string.
          Example: Mobile • 650-555-1212  -->
-    <string name="call_subject_type_and_number"><xliff:g id="type" example="Mobile">%1$s</xliff:g> • <xliff:g id="number" example="(650) 555-1212">%2$s</xliff:g></string>
+    <string name="call_subject_type_and_number"><xliff:g example="Mobile" id="type">%1$s</xliff:g> • <xliff:g example="(650) 555-1212" id="number">%2$s</xliff:g></string>
 
     <!-- String format to describe the number of unread items in a tab.
 
@@ -843,4 +842,168 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
 
          [CHAR LIMIT=NONE]-->
     <string name="description_search_video_call">Place video call</string>
+
+    <!-- String describing the back button in the dialpad. -->
+    <string name="description_dialpad_back">Navigate back</string>
+    <!-- String describing the overflow menu button in the dialpad. -->
+    <string name="description_dialpad_overflow">More options</string>
+
+    <!-- String describing the Delete/Backspace ImageButton.
+     Used by AccessibilityService to announce the purpose of the button.
+-->
+    <string name="description_delete_button">backspace</string>
+
+
+    <!-- String describing the Dial ImageButton
+
+         Used by AccessibilityService to announce the purpose of the button.
+    -->
+    <string name="description_dial_button">dial</string>
+
+    <!--  Do not translate. -->
+    <string name="dialpad_star_number">*</string>
+    <!--  Do not translate. -->
+    <string name="dialpad_pound_number">#</string>
+
+    <!--  Do not translate. -->
+    <string name="dialpad_0_letters">+</string>
+    <!--  Do not translate. -->
+    <string name="dialpad_1_letters"></string>
+    <!--  Do not translate. -->
+    <string name="dialpad_2_letters">ABC</string>
+    <!--  Do not translate. -->
+    <string name="dialpad_3_letters">DEF</string>
+    <!--  Do not translate. -->
+    <string name="dialpad_4_letters">GHI</string>
+    <!--  Do not translate. -->
+    <string name="dialpad_5_letters">JKL</string>
+    <!--  Do not translate. -->
+    <string name="dialpad_6_letters">MNO</string>
+    <!--  Do not translate. -->
+    <string name="dialpad_7_letters">PQRS</string>
+    <!--  Do not translate. -->
+    <string name="dialpad_8_letters">TUV</string>
+    <!--  Do not translate. -->
+    <string name="dialpad_9_letters">WXYZ</string>
+    <!--  Do not translate. -->
+    <string name="dialpad_star_letters"></string>
+    <!--  Do not translate. -->
+    <string name="dialpad_pound_letters"></string>
+
+    <!--  String describing the button used to add a plus (+) symbol to the dialpad -->
+    <string name="description_image_button_plus">plus</string>
+    <!-- String describing the Voicemail ImageButton.
+         Used by AccessibilityService to announce the purpose of the button.
+    -->
+    <string name="description_voicemail_button">voicemail</string>
+
+    <!-- Dialog message which is shown when the user tries to check voicemail
+     while the system is in airplane mode. The user cannot access to
+     voicemail service in Airplane mode. [CHAR LIMI=NONE] -->
+    <string name="dialog_voicemail_airplane_mode_message">To call voicemail, first turn off Airplane mode.</string>
+
+    <!-- Dialog message which is shown when the user tries to check voicemail
+       while the system isn't ready for the access. [CHAR LIMIT=NONE] -->
+    <string name="dialog_voicemail_not_ready_message">To set up voicemail, go to Menu &gt; Settings.</string>
+
+
+    <!-- Label for the dialer app setting page [CHAR LIMIT=30]-->
+    <string name="dialer_settings_label">Settings</string>
+
+    <!-- Menu item to create a new contact [CHAR LIMIT=30] -->
+    <string name="menu_newContact">New contact</string>
+
+    <!--  Title of activity that displays a list of all archived voicemails -->
+    <string name="voicemail_archive_activity_title">Voicemail Archive</string>
+
+    <!-- Content description for the fake action menu button that brings up the call history
+       activity -->
+    <string name="action_menu_call_history_description">Call History</string>
+
+    <!-- Menu items for dialpad options as part of Pause and Wait ftr [CHAR LIMIT=30] -->
+    <string name="add_2sec_pause">Add 2-sec pause</string>
+    <string name="add_wait">Add wait</string>
+
+    <!-- Dialog message which is shown when the user tries to make a phone call
+     to prohibited phone numbers [CHAR LIMIT=NONE] -->
+    <string name="dialog_phone_call_prohibited_message" msgid="4313552620858880999">Can\'t call this number</string>
+
+
+    <!-- Item label: use the Dialer's dialpad to add another call.
+         (Part of a list of options shown in the dialer when another call
+         is already in progress.) -->
+    <string name="dialer_addAnotherCall">Add call</string>
+
+    <!-- Item label: jump to the in-call UI.
+     (Part of a list of options shown in the dialer when another call
+     is already in progress.) -->
+    <string name="dialer_returnToInCallScreen">Return to call in progress</string>
+
+    <!-- Item label: jump to the in-call DTMF dialpad.
+      (Part of a list of options shown in the dialer when another call
+      is already in progress.) -->
+    <string name="dialer_useDtmfDialpad">Use touch tone keypad</string>
+
+    <!-- Menu item used to remove all calls from the call log -->
+    <string name="call_log_delete_all">Clear call history</string>
+
+    <!-- String used to display calls from unknown numbers in the call log -->
+    <string name="unknown">Unknown</string>
+
+    <!-- String used to display calls from private numbers in the call log -->
+    <string name="private_num">Private number</string>
+
+    <!-- String used to display calls from pay phone in the call log -->
+    <string name="payphone">Payphone</string>
+
+
+    <!-- String used for displaying calls to the voicemail number in the call log -->
+    <string name="voicemail">Voicemail</string>
+
+    <!-- String describing the secondary line number the call was received via.
+      Note: AccessibilityServices use this attribute to announce what the view represents.
+      [CHAR LIMIT=NONE]-->
+    <string name="description_via_number">via <xliff:g id="number" example="(555) 555-5555">%1$s</xliff:g></string>
+
+    <!-- String describing the PhoneAccount and via number that a call was received on, if both are
+       visible.
+       Note: AccessibilityServices use this attribute to announce what the view represents.
+       [CHAR LIMIT=NONE]-->
+    <string name="description_via_number_phone_account">on <xliff:g id="phoneAccount" example="SIM 1">%1$s</xliff:g>, via <xliff:g id="number" example="(555) 555-5555">%2$s</xliff:g></string>
+
+
+    <!-- String describing the phone account the call was made on or to. This string will be used
+      in description_incoming_missed_call, description_incoming_answered_call, and
+      description_outgoing_call.
+      Note: AccessibilityServices uses this attribute to announce what the view represents.
+      [CHAR LIMIT=NONE] -->
+    <string name="description_phone_account">on <xliff:g id="phoneAccount" example="SIM 1">^1</xliff:g></string>
+
+    <!-- Title for incoming call type. [CHAR LIMIT=40] -->
+    <string name="type_incoming">Incoming call</string>
+
+    <!-- Title for outgoing call type. [CHAR LIMIT=40] -->
+    <string name="type_outgoing">Outgoing call</string>
+
+    <!-- Title for missed call type. [CHAR LIMIT=40] -->
+    <string name="type_missed">Missed call</string>
+
+    <!-- Title for incoming video call in call details screen [CHAR LIMIT=60] -->
+    <string name="type_incoming_video">Incoming video call</string>
+
+    <!-- Title for outgoing video call in call details screen [CHAR LIMIT=60] -->
+    <string name="type_outgoing_video">Outgoing video call</string>
+
+    <!-- Title for missed video call in call details screen [CHAR LIMIT=60] -->
+    <string name="type_missed_video">Missed video call</string>
+
+
+    <!-- Title for voicemail details screen -->
+    <string name="type_voicemail">Voicemail</string>
+    <!-- Title for rejected call type. [CHAR LIMIT=40] -->
+    <string name="type_rejected">Declined call</string>
+    <!-- Title for blocked call type. [CHAR LIMIT=40] -->
+    <string name="type_blocked">Blocked call</string>
 </resources>
+
+

@@ -23,7 +23,7 @@ import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.widget.ListView;
 
-import com.mobileglobe.android.customdialer.R;
+
 import com.mobileglobe.android.customdialer.common.compat.CompatUtils;
 
 /**

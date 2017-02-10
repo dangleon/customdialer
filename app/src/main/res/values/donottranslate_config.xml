@@ -91,4 +91,9 @@
     <string name="pref_privacy_policy_key">pref_privacy_policy</string>
     <string name="pref_terms_of_service_key">pref_terms_of_service</string>
 
+
+    <!-- Regular expression for prohibiting certain phone numbers in dialpad.
+         Ignored if empty. -->
+    <string name="config_prohibited_phone_number_regexp"></string>
+
 </resources>

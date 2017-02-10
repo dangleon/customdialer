@@ -36,4 +36,7 @@
 
     <!-- A big number to make sure "About contacts" always showing at the bottom of Settings.-->
     <integer name="about_contacts_order_number">100</integer>
+
+    <!-- animation constants -->
+    <integer name="dialpad_slide_in_duration">400</integer>
 </resources>

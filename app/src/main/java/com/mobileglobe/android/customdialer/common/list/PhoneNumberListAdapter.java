@@ -15,12 +15,14 @@
  */
 package com.mobileglobe.android.customdialer.common.list;
 
+import android.annotation.TargetApi;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.net.Uri.Builder;
+import android.os.Build;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Callable;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
@@ -586,6 +588,7 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
      * 3. Iterate the extended directories and for each one, assign an ID and insert it in the
      *    proper location.
      */
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     public void changeDirectories(Cursor cursor) {
         super.changeDirectories(cursor);

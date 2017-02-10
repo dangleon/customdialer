@@ -167,4 +167,45 @@
     <dimen name="call_subject_dialog_secondary_text_size">14sp</dimen>
     <!-- Row padding for call subject history items. -->
     <dimen name="call_subject_history_item_padding">15dp</dimen>
+
+    <!-- Text dimensions for dialpad keys -->
+    <dimen name="dialpad_key_numbers_size">@dimen/dialpad_key_numbers_default_size</dimen>
+    <dimen name="dialpad_key_numbers_default_size">36sp</dimen>
+    <dimen name="dialpad_key_letters_size">12sp</dimen>
+    <dimen name="dialpad_key_pound_size">23sp</dimen>
+    <dimen name="dialpad_key_star_size">36sp</dimen>
+    <dimen name="dialpad_key_height">64dp</dimen>
+    <dimen name="dialpad_key_number_margin_bottom">@dimen/dialpad_key_number_default_margin_bottom</dimen>
+    <dimen name="dialpad_key_number_default_margin_bottom">3dp</dimen>
+    <!-- Zero key should have less space between self and text because "+" is smaller -->
+    <dimen name="dialpad_zero_key_number_margin_bottom">@dimen/dialpad_zero_key_number_default_margin_bottom</dimen>
+    <dimen name="dialpad_zero_key_number_default_margin_bottom">1dp</dimen>
+    <dimen name="dialpad_symbol_margin_bottom">13dp</dimen>
+    <dimen name="dialpad_key_plus_size">18sp</dimen>
+    <dimen name="dialpad_horizontal_padding">5dp</dimen>
+    <dimen name="dialpad_digits_text_size">34sp</dimen>
+    <dimen name="dialpad_digits_text_min_size">24sp</dimen>
+    <dimen name="dialpad_digits_height">60dp</dimen>
+    <!-- Provide adjustable dimensions so that different apps can use different dialpad sizes. -->
+    <dimen name="dialpad_digits_adjustable_text_size">@dimen/dialpad_digits_text_size</dimen>
+    <dimen name="dialpad_digits_adjustable_height">@dimen/dialpad_digits_height</dimen>
+    <dimen name="dialpad_digits_padding">16dp</dimen>
+    <dimen name="dialpad_digits_menu_left_padding">8dp</dimen>
+    <dimen name="dialpad_digits_menu_right_padding">10dp</dimen>
+    <dimen name="dialpad_center_margin">3dp</dimen>
+    <dimen name="dialpad_button_margin">2dp</dimen>
+    <dimen name="dialpad_voicemail_icon_padding_top">2dp</dimen>
+    <dimen name="dialpad_key_button_translate_y">100dp</dimen>
+    <dimen name="dialpad_overflow_margin">8dp</dimen>
+    <dimen name="dialpad_space_above_keys">14dp</dimen>
+    <dimen name="dialpad_space_below_keys">8dp</dimen>
+    <!-- The bottom space of the dialpad to account for the dial button -->
+    <dimen name="dialpad_bottom_space_height">80dp</dimen>
+
+    <!-- Top/Bottom padding around the ILD rate display box. -->
+    <dimen name="ild_margin_height">10dp</dimen>
+
+    <!-- Length of dialpad's shadows in dialer. -->
+    <dimen name="shadow_length">10dp</dimen>
+
 </resources>

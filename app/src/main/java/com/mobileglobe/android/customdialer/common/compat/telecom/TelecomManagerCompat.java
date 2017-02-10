@@ -17,7 +17,9 @@ package com.mobileglobe.android.customdialer.common.compat.telecom;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Application;
 import android.content.Intent;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.annotation.Nullable;
@@ -29,8 +31,10 @@ import android.telephony.PhoneNumberUtils;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
+import com.mobileglobe.android.customdialer.DialerApplication;
 import com.mobileglobe.android.customdialer.common.compat.CompatUtils;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,10 +84,10 @@ public class TelecomManagerCompat {
      * for the the content retrieve.
      */
     public static Uri getAdnUriForPhoneAccount(@Nullable TelecomManager telecomManager,
-            PhoneAccountHandle accountHandle) {
+                                               PhoneAccountHandle accountHandle) {
         if (telecomManager != null && (CompatUtils.isMarshmallowCompatible()
                 || CompatUtils.isMethodAvailable(TELECOM_MANAGER_CLASS, "getAdnUriForPhoneAccount",
-                        PhoneAccountHandle.class))) {
+                PhoneAccountHandle.class))) {
             return telecomManager.getAdnUriForPhoneAccount(accountHandle);
         }
         return Uri.parse("content://icc/adn");
@@ -101,7 +105,17 @@ public class TelecomManagerCompat {
             @Nullable TelecomManager telecomManager) {
         if (telecomManager != null && (CompatUtils.isMarshmallowCompatible()
                 || CompatUtils.isMethodAvailable(TELECOM_MANAGER_CLASS,
-                        "getCallCapablePhoneAccounts"))) {
+                "getCallCapablePhoneAccounts"))) {
+            if (ActivityCompat.checkSelfPermission(DialerApplication.getContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return new ArrayList<>();
+            }
             return telecomManager.getCallCapablePhoneAccounts();
         }
         return new ArrayList<>();
@@ -144,7 +158,17 @@ public class TelecomManagerCompat {
             @Nullable TelecomManager telecomManager, @Nullable String uriScheme) {
         if (telecomManager != null && (CompatUtils.isMarshmallowCompatible()
                 || CompatUtils.isMethodAvailable(TELECOM_MANAGER_CLASS,
-                        "getDefaultOutgoingPhoneAccount", String.class))) {
+                "getDefaultOutgoingPhoneAccount", String.class))) {
+            if (ActivityCompat.checkSelfPermission(DialerApplication.getContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return null;
+            }
             return telecomManager.getDefaultOutgoingPhoneAccount(uriScheme);
         }
         return null;
@@ -162,9 +186,19 @@ public class TelecomManagerCompat {
      */
     @Nullable
     public static String getLine1Number(@Nullable TelecomManager telecomManager,
-            @Nullable TelephonyManager telephonyManager,
-            @Nullable PhoneAccountHandle phoneAccountHandle) {
+                                        @Nullable TelephonyManager telephonyManager,
+                                        @Nullable PhoneAccountHandle phoneAccountHandle) {
         if (telecomManager != null && CompatUtils.isMarshmallowCompatible()) {
+            if (ActivityCompat.checkSelfPermission(DialerApplication.getContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return null;
+            }
             return telecomManager.getLine1Number(phoneAccountHandle);
         }
         if (telephonyManager != null) {
@@ -182,12 +216,23 @@ public class TelecomManagerCompat {
      * @param number The number to look up.
      */
     public static boolean isVoiceMailNumber(@Nullable TelecomManager telecomManager,
-            @Nullable PhoneAccountHandle accountHandle, @Nullable String number) {
+                                            @Nullable PhoneAccountHandle accountHandle, @Nullable String number) {
         if (telecomManager != null && (CompatUtils.isMarshmallowCompatible()
                 || CompatUtils.isMethodAvailable(TELECOM_MANAGER_CLASS, "isVoiceMailNumber",
-                        PhoneAccountHandle.class, String.class))) {
+                PhoneAccountHandle.class, String.class))) {
+            if (ActivityCompat.checkSelfPermission(DialerApplication.getContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return false;
+            }
             return telecomManager.isVoiceMailNumber(accountHandle, number);
         }
+
         return PhoneNumberUtils.isVoiceMailNumber(number);
     }
 
@@ -201,7 +246,7 @@ public class TelecomManagerCompat {
      */
     @Nullable
     public static PhoneAccount getPhoneAccount(@Nullable TelecomManager telecomManager,
-            @Nullable PhoneAccountHandle accountHandle) {
+                                               @Nullable PhoneAccountHandle accountHandle) {
         if (telecomManager != null && (CompatUtils.isMethodAvailable(
                 TELECOM_MANAGER_CLASS, "getPhoneAccount", PhoneAccountHandle.class))) {
             return telecomManager.getPhoneAccount(accountHandle);
@@ -222,10 +267,20 @@ public class TelecomManagerCompat {
      */
     @Nullable
     public static String getVoiceMailNumber(@Nullable TelecomManager telecomManager,
-            @Nullable TelephonyManager telephonyManager,
-            @Nullable PhoneAccountHandle accountHandle) {
+                                            @Nullable TelephonyManager telephonyManager,
+                                            @Nullable PhoneAccountHandle accountHandle) {
         if (telecomManager != null && (CompatUtils.isMethodAvailable(
                 TELECOM_MANAGER_CLASS, "getVoiceMailNumber", PhoneAccountHandle.class))) {
+            if (ActivityCompat.checkSelfPermission(DialerApplication.getContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return null;
+            }
             return telecomManager.getVoiceMailNumber(accountHandle);
         } else if (telephonyManager != null){
             return telephonyManager.getVoiceMailNumber();

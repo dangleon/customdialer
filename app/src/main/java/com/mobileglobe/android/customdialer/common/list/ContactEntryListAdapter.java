@@ -15,11 +15,13 @@
  */
 package com.mobileglobe.android.customdialer.common.list;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
@@ -394,6 +396,7 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
      * Updates partitions according to the directory meta-data contained in the supplied
      * cursor.
      */
+    @TargetApi(Build.VERSION_CODES.N)
     public void changeDirectories(Cursor cursor) {
         if (cursor.getCount() == 0) {
             // Directory table must have at least local directory, without which this adapter will
@@ -629,6 +632,7 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.N)
     @Override
     protected void bindHeaderView(View view, int partitionIndex, Cursor cursor) {
         Partition partition = getPartition(partitionIndex);
