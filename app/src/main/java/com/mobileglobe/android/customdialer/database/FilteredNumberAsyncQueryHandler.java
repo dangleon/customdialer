@@ -28,10 +28,10 @@ import android.support.annotation.Nullable;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 
-import com.android.dialer.compat.FilteredNumberCompat;
-import com.android.dialer.database.FilteredNumberContract.FilteredNumber;
-import com.android.dialer.database.FilteredNumberContract.FilteredNumberColumns;
-import com.android.dialer.database.FilteredNumberContract.FilteredNumberTypes;
+import com.mobileglobe.android.customdialer.compat.FilteredNumberCompat;
+import com.mobileglobe.android.customdialer.database.FilteredNumberContract.FilteredNumber;
+import com.mobileglobe.android.customdialer.database.FilteredNumberContract.FilteredNumberColumns;
+import com.mobileglobe.android.customdialer.database.FilteredNumberContract.FilteredNumberTypes;
 
 public class FilteredNumberAsyncQueryHandler extends AsyncQueryHandler {
     private static final int NO_TOKEN = 0;

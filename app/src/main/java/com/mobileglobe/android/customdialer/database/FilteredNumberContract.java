@@ -19,7 +19,7 @@ package com.mobileglobe.android.customdialer.database;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-import com.mobileglobe.android.customdialer.commonbind.ObjectFactory;
+import com.mobileglobe.android.customdialer.dialerbind.ObjectFactory;
 
 
 /**

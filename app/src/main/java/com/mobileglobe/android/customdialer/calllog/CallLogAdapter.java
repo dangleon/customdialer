@@ -32,7 +32,6 @@ import com.mobileglobe.android.customdialer.common.util.PermissionsUtil;
 import com.mobileglobe.android.customdialer.DialtactsActivity;
 import com.mobileglobe.android.customdialer.PhoneCallDetails;
 import com.mobileglobe.android.customdialer.R;
-import com.mobileglobe.android.customdialer.calllog.calllogcache.CallLogCache;
 import com.mobileglobe.android.customdialer.contactinfo.ContactInfoCache;
 import com.mobileglobe.android.customdialer.contactinfo.ContactInfoCache.OnContactInfoChangedListener;
 import com.mobileglobe.android.customdialer.database.FilteredNumberAsyncQueryHandler;
@@ -43,6 +42,8 @@ import com.mobileglobe.android.customdialer.logging.Logger;
 import com.mobileglobe.android.customdialer.service.ExtendedBlockingButtonRenderer;
 import com.mobileglobe.android.customdialer.util.PhoneNumberUtil;
 import com.mobileglobe.android.customdialer.voicemail.VoicemailPlaybackPresenter;
+import com.mobileglobe.android.customdialer.widget.GroupingListAdapter;
+
 import java.util.HashMap;
 import java.util.Map;
 /**

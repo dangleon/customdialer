@@ -1,9 +1,5 @@
 package com.mobileglobe.android.customdialer.dialerbind;
 
-/**
- * Created by dang on 2/10/17.
- */
-
 /*
  * Copyright (C) 2013 The Android Open Source Project
  *
@@ -20,24 +16,26 @@ package com.mobileglobe.android.customdialer.dialerbind;
  * limitations under the License
  */
 
+import android.content.Context;
+
+import static com.mobileglobe.android.customdialer.calllog.CallLogAdapter.CallFetcher;
 
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
+import android.support.annotation.Nullable;
 
 import com.mobileglobe.android.customdialer.calllog.CallLogAdapter;
 import com.mobileglobe.android.customdialer.calllog.ContactInfoHelper;
-import com.mobileglobe.android.customdialer.common.logging.Logger;
 import com.mobileglobe.android.customdialer.list.RegularSearchFragment;
+import com.mobileglobe.android.customdialer.logging.Logger;
 import com.mobileglobe.android.customdialer.service.CachedNumberLookupService;
-import com.mobileglobe.android.customdialer.service.SpamButtonRenderer;
+import com.mobileglobe.android.customdialer.service.ExtendedBlockingButtonRenderer;
 import com.mobileglobe.android.customdialer.voicemail.VoicemailPlaybackPresenter;
 
 /**
  * Default static binding for various objects.
  */
 public class ObjectFactory {
+
     public static CachedNumberLookupService newCachedNumberLookupService() {
         // no-op
         return null;
@@ -47,13 +45,48 @@ public class ObjectFactory {
         return "com.android.dialer.database.filterednumberprovider";
     }
 
-    public static SpamButtonRenderer newSpamButtonRenderer(
-            Context context,
-            ViewStub stub) {
+    public static String getVoicemailArchiveProviderAuthority() {
+        return "com.android.dialer.database.voicemailarchiveprovider";
+    }
+
+    public static boolean isVoicemailArchiveEnabled(Context context) {
+        return false;
+    }
+
+    public static boolean isVoicemailShareEnabled(Context context) {
+        return false;
+    }
+
+    public static boolean isNewBlockingEnabled(Context context) {
+        return true;
+    }
+
+    @Nullable
+    public static ExtendedBlockingButtonRenderer newExtendedBlockingButtonRenderer(
+            Context context, ExtendedBlockingButtonRenderer.Listener listener) {
         return null;
     }
 
-
+    /**
+     * Create a new instance of the call log adapter.
+     * @param context The context to use.
+     * @param callFetcher Instance of call fetcher to use.
+     * @param contactInfoHelper Instance of contact info helper class to use.
+     * @return Instance of CallLogAdapter.
+     */
+    public static CallLogAdapter newCallLogAdapter(
+            Context context,
+            CallFetcher callFetcher,
+            ContactInfoHelper contactInfoHelper,
+            VoicemailPlaybackPresenter voicemailPlaybackPresenter,
+            int activityType) {
+        return new CallLogAdapter(
+                context,
+                callFetcher,
+                contactInfoHelper,
+                voicemailPlaybackPresenter,
+                activityType);
+    }
 
     public static Logger getLoggerInstance() {
         // no-op
