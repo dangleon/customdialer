@@ -16,6 +16,29 @@
 
 <resources>
 
+    <style name="AppTheme">
+
+    </style>
+    <!--
+    begin phone common style
+    begin phone common style
+    begin phone common style
+     -->
+
+    <style name="DialpadSpaceStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">3</item>
+    </style>
+
+    <!--
+    end phone common style
+    end phone common style
+    end phone common style
+     -->
+
+
+
     <!--
     begin contact common style
     begin contact common style
@@ -97,11 +120,112 @@ background and text color. See also android:style/Widget.Holo.TextView.ListSepar
         <item name="android:windowElevation">0dp</item>
     </style>
 
+
+
+    <style name="DialpadKeyNumberStyle">
+        <item name="android:textColor">?attr/dialpad_text_color_primary</item>
+        <item name="android:textSize">@dimen/dialpad_key_numbers_size</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/dialpad_key_number_margin_bottom</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DialpadBottomKeyNumberStyle" parent="DialpadKeyNumberStyle">
+        <item name="android:layout_marginBottom">@dimen/dialpad_zero_key_number_margin_bottom</item>
+    </style>
+
+    <style name="DialpadKeyStarStyle">
+        <item name="android:textColor">?attr/dialpad_text_color_secondary</item>
+        <item name="android:textSize">@dimen/dialpad_key_star_size</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:alpha">0.8</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/dialpad_symbol_margin_bottom</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DialpadKeyPoundStyle">
+        <item name="android:textColor">?attr/dialpad_text_color_secondary</item>
+        <item name="android:textSize">@dimen/dialpad_key_pound_size</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:alpha">0.8</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/dialpad_symbol_margin_bottom</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DialpadKeyLettersStyle">
+        <item name="android:textColor">?attr/dialpad_text_color_secondary</item>
+        <item name="android:textSize">@dimen/dialpad_key_letters_size</item>
+        <item name="android:fontFamily">sans-serif-regular</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+
+
+
+    <style name="DialpadKeyButtonStyle">
+        <item name="android:soundEffectsEnabled">false</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">13</item>
+        <item name="android:minHeight">@dimen/dialpad_key_height</item>
+        <item name="android:background">@drawable/btn_dialpad_key</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="DialpadKeyInternalLayoutStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+    <style name="Dialpad_Light">
+        <item name="dialpad_text_color">@color/dialpad_digits_text_color</item>
+        <item name="dialpad_text_color_primary">@color/dialpad_primary_text_color</item>
+        <item name="dialpad_text_color_secondary">@color/dialpad_secondary_text_color</item>
+        <item name="dialpad_icon_tint">@color/dialpad_icon_tint</item>
+        <item name="dialpad_voicemail_tint">@color/dialpad_voicemail_tint</item>
+        <item name="dialpad_background">@color/background_dialpad</item>
+    </style>
     <!--
-    end dialer style
-    end dialer style
-    end dialer style
+    end contact common style
+    end contact common style
+    end contact common style
     -->
+
+
+    <!--
+    begin dialer style
+    begin dialer style
+    begin dialer style
+    -->
+
+    <style name="DialerFlatButtonStyle" parent="@android:style/Widget.Material.Button">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:paddingEnd">@dimen/button_horizontal_padding</item>
+        <item name="android:paddingStart">@dimen/button_horizontal_padding</item>
+        <item name="android:textColor">@color/dialer_flat_button_text_color</item>
+    </style>
+
+    <!-- Style for the 'primary' button in a view. Unlike the DialerFlatButtonStyle, this button -->
+    <!-- is not colored white, to draw more attention to it. -->
+    <style name="DialerPrimaryFlatButtonStyle" parent="@android:style/Widget.Material.Button">
+        <item name="android:background">@drawable/selectable_primary_flat_button</item>
+        <item name="android:paddingEnd">@dimen/button_horizontal_padding</item>
+        <item name="android:paddingStart">@dimen/button_horizontal_padding</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
 
     <style name="BlockedNumbersDescriptionTextStyle">
@@ -110,4 +234,16 @@ background and text color. See also android:style/Widget.Holo.TextView.ListSepar
         <item name="android:paddingBottom">8dp</item>
         <item name="android:textSize">@dimen/blocked_number_settings_description_text_size</item>
     </style>
+
+    <style name="FullWidthDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+    <!--
+    end dialer style
+    end dialer style
+    end dialer style
+    -->
+
 </resources>

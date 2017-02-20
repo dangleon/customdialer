@@ -29,10 +29,10 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.contacts.common.GeoUtil;
-import com.android.dialer.database.FilteredNumberContract.FilteredNumberColumns;
-import com.android.dialerbind.DatabaseHelperManager;
-import com.android.dialerbind.ObjectFactory;
+import com.mobileglobe.android.customdialer.common.GeoUtil;
+import com.mobileglobe.android.customdialer.database.FilteredNumberContract.FilteredNumberColumns;
+import com.mobileglobe.android.customdialer.dialerbind.DatabaseHelperManager;
+import com.mobileglobe.android.customdialer.dialerbind.ObjectFactory;
 import com.google.common.annotations.VisibleForTesting;
 
 /**

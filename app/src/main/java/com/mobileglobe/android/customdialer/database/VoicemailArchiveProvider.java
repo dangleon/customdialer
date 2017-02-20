@@ -30,7 +30,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 
-import com.android.dialerbind.DatabaseHelperManager;
+import com.mobileglobe.android.customdialer.dialerbind.DatabaseHelperManager;
 import com.google.common.annotations.VisibleForTesting;
 
 import java.io.File;
