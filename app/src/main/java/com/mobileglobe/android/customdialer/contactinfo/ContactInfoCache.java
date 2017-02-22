@@ -23,6 +23,7 @@ import android.text.TextUtils;
 import com.mobileglobe.android.customdialer.calllog.ContactInfo;
 import com.mobileglobe.android.customdialer.calllog.ContactInfoHelper;
 import com.google.common.annotations.VisibleForTesting;
+import com.mobileglobe.android.customdialer.util.ExpirableCache;
 
 import java.util.LinkedList;
 

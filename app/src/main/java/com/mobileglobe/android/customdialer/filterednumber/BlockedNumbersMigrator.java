@@ -20,13 +20,13 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.AsyncTask;
+import android.util.Log;
 
-import com.android.dialer.compat.BlockedNumbersSdkCompat;
-import com.android.dialer.compat.FilteredNumberCompat;
-import com.android.dialer.database.FilteredNumberContract;
-import com.android.dialer.database.FilteredNumberContract.FilteredNumber;
-import com.android.dialer.database.FilteredNumberContract.FilteredNumberColumns;
-import com.android.incallui.Log;
+import com.mobileglobe.android.customdialer.compat.BlockedNumbersSdkCompat;
+import com.mobileglobe.android.customdialer.compat.FilteredNumberCompat;
+import com.mobileglobe.android.customdialer.database.FilteredNumberContract;
+import com.mobileglobe.android.customdialer.database.FilteredNumberContract.FilteredNumber;
+import com.mobileglobe.android.customdialer.database.FilteredNumberContract.FilteredNumberColumns;
 import com.google.common.base.Preconditions;
 
 /**

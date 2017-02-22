@@ -125,7 +125,7 @@ public class MissedCallNotifier {
         } else {
             titleResId = R.string.notification_missedCallsTitle;
             expandedText =
-                    mContext.getString(R.string.notification_missedCallsMsg, count);
+                    mContext.getString(R.string.notification_missedCallsMsg, ""+count);
         }
 
         // Create a public viewable version of the notification, suitable for display when sensitive

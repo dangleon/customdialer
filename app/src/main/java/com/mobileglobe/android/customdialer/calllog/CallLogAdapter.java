@@ -24,6 +24,8 @@ import android.view.View;
 import android.view.View.AccessibilityDelegate;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
+
+import com.mobileglobe.android.customdialer.calllog.calllogcache.CallLogCache;
 import com.mobileglobe.android.customdialer.common.ContactsUtils;
 import com.mobileglobe.android.customdialer.common.compat.CompatUtils;
 import com.mobileglobe.android.customdialer.common.compat.PhoneNumberUtilsCompat;

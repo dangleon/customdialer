@@ -31,15 +31,15 @@ import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.android.contacts.common.testing.NeededForTesting;
-import com.android.dialer.R;
-import com.android.dialer.compat.FilteredNumberCompat;
-import com.android.dialer.database.FilteredNumberAsyncQueryHandler;
-import com.android.dialer.database.FilteredNumberAsyncQueryHandler.OnHasBlockedNumbersListener;
-import com.android.dialer.database.FilteredNumberContract.FilteredNumber;
-import com.android.dialer.database.FilteredNumberContract.FilteredNumberColumns;
-import com.android.dialer.logging.InteractionEvent;
-import com.android.dialer.logging.Logger;
+import com.mobileglobe.android.customdialer.common.testing.NeededForTesting;
+import com.mobileglobe.android.customdialer.R;
+import com.mobileglobe.android.customdialer.compat.FilteredNumberCompat;
+import com.mobileglobe.android.customdialer.database.FilteredNumberAsyncQueryHandler;
+import com.mobileglobe.android.customdialer.database.FilteredNumberAsyncQueryHandler.OnHasBlockedNumbersListener;
+import com.mobileglobe.android.customdialer.database.FilteredNumberContract.FilteredNumber;
+import com.mobileglobe.android.customdialer.database.FilteredNumberContract.FilteredNumberColumns;
+import com.mobileglobe.android.customdialer.logging.InteractionEvent;
+import com.mobileglobe.android.customdialer.logging.Logger;
 
 import java.util.concurrent.TimeUnit;
 

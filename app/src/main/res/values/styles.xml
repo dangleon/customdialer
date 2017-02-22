@@ -37,6 +37,63 @@
     end phone common style
      -->
 
+    <style name="CallLogActionStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/call_log_action_height</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="CallLogActionTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">@dimen/call_log_action_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/call_log_action_horizontal_padding</item>
+        <item name="android:textColor">@color/call_log_action_color</item>
+        <item name="android:textSize">@dimen/call_log_primary_text_size</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+        <item name="android:focusable">true</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:importantForAccessibility">no</item>
+    </style>
+
+    <style name="CallLogActionSupportTextStyle" parent="@style/CallLogActionTextStyle">
+        <item name="android:textSize">@dimen/call_log_detail_text_size</item>
+        <item name="android:textColor">@color/call_log_detail_color</item>
+    </style>
+
+    <style name="CallLogActionIconStyle">
+        <item name="android:layout_width">@dimen/call_log_action_icon_dimen</item>
+        <item name="android:layout_height">@dimen/call_log_action_icon_dimen</item>
+        <item name="android:layout_marginStart">@dimen/call_log_action_icon_margin_start</item>
+        <item name="android:tint">?attr/call_log_secondary_text_color</item>
+        <item name="android:importantForAccessibility">no</item>
+    </style>
+
+
+    <style name="CallLogCardStyle" parent="CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:baselineAligned">false</item>
+        <item name="cardCornerRadius">2dp</item>
+        <item name="cardBackgroundColor">@color/background_dialer_call_log_list_item</item>
+    </style>
+
+
+    <style name="CallDetailActionItemStyle">
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:drawablePadding">@dimen/call_detail_action_item_drawable_padding</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">@dimen/call_detail_action_item_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/call_detail_action_item_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/call_detail_action_item_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/call_detail_action_item_padding_vertical</item>
+        <item name="android:textColor">@color/call_detail_footer_text_color</item>
+        <item name="android:textSize">@dimen/call_detail_action_item_text_size</item>
+    </style>
 
 
     <!--
@@ -240,10 +297,43 @@ background and text color. See also android:style/Widget.Holo.TextView.ListSepar
         <item name="android:layout_height">1dp</item>
         <item name="android:background">?android:attr/listDivider</item>
     </style>
+
+
+
+    <style name="VoicemailPlaybackLayoutTextStyle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="VoicemailPlaybackLayoutButtonStyle">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:background">@drawable/oval_ripple</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
     <!--
     end dialer style
     end dialer style
     end dialer style
     -->
+    <style name="TextActionStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/call_log_action_height</item>
+        <item name="android:gravity">end|center_vertical</item>
+        <item name="android:paddingStart">@dimen/call_log_action_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/call_log_action_horizontal_padding</item>
+        <item name="android:textColor">@color/dialtacts_theme_color</item>
+        <item name="android:fontFamily">"sans-serif-medium"</item>
+        <item name="android:focusable">true</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+
+
+    <style name="PromoCardActionStyle" parent="TextActionStyle">
+        <item name="android:textColor">@color/promo_card_text</item>
+        <item name="android:textSize">@dimen/call_log_primary_text_size</item>
+    </style>
 
 </resources>

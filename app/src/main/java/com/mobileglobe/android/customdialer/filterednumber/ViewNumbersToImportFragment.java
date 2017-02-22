@@ -29,8 +29,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.dialer.R;
-import com.android.dialer.filterednumber.FilteredNumbersUtil.ImportSendToVoicemailContactsListener;
+import com.mobileglobe.android.customdialer.R;
+import com.mobileglobe.android.customdialer.filterednumber.FilteredNumbersUtil.ImportSendToVoicemailContactsListener;
 
 public class ViewNumbersToImportFragment extends ListFragment
         implements LoaderManager.LoaderCallbacks<Cursor>,

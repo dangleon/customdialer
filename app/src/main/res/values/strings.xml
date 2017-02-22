@@ -1937,6 +1937,10 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
     <!-- Accessibility announcement to indicate which call is active -->
     <string name="accessibility_call_is_active"><xliff:g id="nameOrNumber">^1</xliff:g> is active</string>
 
+
+
+    <string name="contacts_file_provider_authority">com.android.contacts.files</string>
+
 </resources>
 
 

@@ -85,9 +85,12 @@
 
     <color name="voicemail_icon_tint">@color/call_log_icon_tint</color>
     <color name="voicemail_icon_disabled_tint">#80000000</color>
-        <!-- Colour of voicemail progress bar to the right of position indicator. -->
+    <color name="voicemail_playpause_icon_tint">@color/dialer_theme_color</color>
+    <!-- Colour of voicemail progress bar to the right of position indicator. -->
     <color name="voicemail_playback_seek_bar_yet_to_play">#cecece</color>
     <!-- Colour of voicemail progress bar to the left of position indicator. -->
+    <color name="voicemail_playback_seek_bar_already_played">@color/dialer_theme_color</color>
+
 
     <!-- Standard color for selected items. -->
     <color name="item_selected">#660099cc</color>

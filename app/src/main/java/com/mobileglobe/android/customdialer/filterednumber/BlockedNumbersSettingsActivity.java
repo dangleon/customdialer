@@ -19,11 +19,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.android.dialer.R;
-import com.android.dialer.list.BlockedListSearchFragment;
-import com.android.dialer.list.SearchFragment;
-import com.android.dialer.logging.Logger;
-import com.android.dialer.logging.ScreenEvent;
+import com.mobileglobe.android.customdialer.R;
+import com.mobileglobe.android.customdialer.list.BlockedListSearchFragment;
+import com.mobileglobe.android.customdialer.list.SearchFragment;
+import com.mobileglobe.android.customdialer.logging.Logger;
+//import com.mobileglobe.android.customdialer.logging.ScreenEvent;
 
 public class BlockedNumbersSettingsActivity extends AppCompatActivity
         implements SearchFragment.HostInterface {
@@ -58,7 +58,7 @@ public class BlockedNumbersSettingsActivity extends AppCompatActivity
                         TAG_BLOCKED_MANAGEMENT_FRAGMENT)
                 .commit();
 
-        Logger.logScreenView(ScreenEvent.BLOCKED_NUMBER_MANAGEMENT, this);
+        //Logger.logScreenView(ScreenEvent.BLOCKED_NUMBER_MANAGEMENT, this);
     }
 
     /**
@@ -80,7 +80,7 @@ public class BlockedNumbersSettingsActivity extends AppCompatActivity
                 .addToBackStack(null)
                 .commit();
 
-        Logger.logScreenView(ScreenEvent.BLOCKED_NUMBER_ADD_NUMBER, this);
+        //Logger.logScreenView(ScreenEvent.BLOCKED_NUMBER_ADD_NUMBER, this);
     }
 
     /**

@@ -32,15 +32,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.contacts.common.lettertiles.LetterTileDrawable;
-import com.android.contacts.common.testing.NeededForTesting;
-import com.android.dialer.R;
-import com.android.dialer.compat.FilteredNumberCompat;
-import com.android.dialer.database.FilteredNumberContract;
-import com.android.dialer.filterednumber.BlockedNumbersMigrator.Listener;
-import com.android.dialer.filterednumber.FilteredNumbersUtil.CheckForSendToVoicemailContactListener;
-import com.android.dialer.filterednumber.FilteredNumbersUtil.ImportSendToVoicemailContactsListener;
-import com.android.dialer.voicemail.VisualVoicemailEnabledChecker;
+import com.mobileglobe.android.customdialer.common.lettertiles.LetterTileDrawable;
+import com.mobileglobe.android.customdialer.common.testing.NeededForTesting;
+import com.mobileglobe.android.customdialer.R;
+import com.mobileglobe.android.customdialer.compat.FilteredNumberCompat;
+import com.mobileglobe.android.customdialer.database.FilteredNumberContract;
+import com.mobileglobe.android.customdialer.filterednumber.BlockedNumbersMigrator.Listener;
+import com.mobileglobe.android.customdialer.filterednumber.FilteredNumbersUtil.CheckForSendToVoicemailContactListener;
+import com.mobileglobe.android.customdialer.filterednumber.FilteredNumbersUtil.ImportSendToVoicemailContactsListener;
+import com.mobileglobe.android.customdialer.voicemail.VisualVoicemailEnabledChecker;
 import com.google.common.base.MoreObjects;
 
 public class BlockedNumbersFragment extends ListFragment

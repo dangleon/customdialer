@@ -33,7 +33,7 @@ import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.WindowManager.LayoutParams;
 
-import com.android.common.io.MoreCloseables;
+import com.mobileglobe.android.customdialer.common.io.MoreCloseables;
 import com.mobileglobe.android.customdialer.R;
 import com.mobileglobe.android.customdialer.calllog.CallLogAsyncTaskUtil;
 import com.mobileglobe.android.customdialer.util.AsyncTaskExecutor;

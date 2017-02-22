@@ -24,8 +24,8 @@ import android.content.DialogInterface.OnShowListener;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dialer.R;
-import com.android.dialer.filterednumber.BlockedNumbersMigrator.Listener;
+import com.mobileglobe.android.customdialer.R;
+import com.mobileglobe.android.customdialer.filterednumber.BlockedNumbersMigrator.Listener;
 import com.google.common.base.Preconditions;
 
 /**

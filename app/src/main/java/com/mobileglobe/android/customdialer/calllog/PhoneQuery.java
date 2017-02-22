@@ -21,8 +21,8 @@ import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.PhoneLookup;
 
-import com.android.contacts.common.compat.CompatUtils;
-import com.android.contacts.common.compat.PhoneLookupSdkCompat;
+import com.mobileglobe.android.customdialer.common.compat.CompatUtils;
+import com.mobileglobe.android.customdialer.common.compat.PhoneLookupSdkCompat;
 
 /**
  * The queries to look up the {@link ContactInfo} for a given number in the Call Log.
