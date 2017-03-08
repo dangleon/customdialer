@@ -21,8 +21,8 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
-import com.android.phone.common.R;
-import com.android.phone.common.util.ViewUtil;
+import com.mobileglobe.android.customdialer.R;
+import com.mobileglobe.android.customdialer.common.util.ViewUtil;
 
 /**
  * EditText which resizes dynamically with respect to text length.

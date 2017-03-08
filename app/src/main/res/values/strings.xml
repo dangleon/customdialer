@@ -1125,7 +1125,6 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
     <string name="description_search_button">search</string>
 
     <!-- String describing the Dial ImageButton
-
          Used by AccessibilityService to announce the purpose of the button.
     -->
     <string name="description_dial_button">dial</string>

@@ -22,7 +22,9 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -40,12 +42,10 @@ import com.mobileglobe.android.customdialer.database.FilteredNumberContract;
 import com.mobileglobe.android.customdialer.filterednumber.BlockedNumbersMigrator.Listener;
 import com.mobileglobe.android.customdialer.filterednumber.FilteredNumbersUtil.CheckForSendToVoicemailContactListener;
 import com.mobileglobe.android.customdialer.filterednumber.FilteredNumbersUtil.ImportSendToVoicemailContactsListener;
-import com.mobileglobe.android.customdialer.voicemail.VisualVoicemailEnabledChecker;
 import com.google.common.base.MoreObjects;
 
 public class BlockedNumbersFragment extends ListFragment
-        implements LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener,
-        VisualVoicemailEnabledChecker.Callback {
+        implements LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener{
     private static final char ADD_BLOCKED_NUMBER_ICON_LETTER = '+';
 
     private BlockedNumbersMigrator blockedNumbersMigratorForTest;
@@ -53,7 +53,6 @@ public class BlockedNumbersFragment extends ListFragment
     private TextView blockedNumbersText;
     private TextView footerText;
     private BlockedNumbersAdapter mAdapter;
-    private VisualVoicemailEnabledChecker mVoicemailEnabledChecker;
     private View mImportSettings;
     private View mBlockedNumbersDisabledForEmergency;
     private View mBlockedNumberListDivider;
@@ -99,9 +98,6 @@ public class BlockedNumbersFragment extends ListFragment
 
         footerText = (TextView) getActivity().findViewById(
             R.id.blocked_number_footer_textview);
-        mVoicemailEnabledChecker = new VisualVoicemailEnabledChecker(getContext(),this);
-        mVoicemailEnabledChecker.asyncUpdate();
-        updateActiveVoicemailProvider();
     }
 
     @Override
@@ -163,8 +159,6 @@ public class BlockedNumbersFragment extends ListFragment
         } else {
             mBlockedNumbersDisabledForEmergency.setVisibility(View.GONE);
         }
-
-        mVoicemailEnabledChecker.asyncUpdate();
     }
 
     @Override
@@ -229,6 +223,7 @@ public class BlockedNumbersFragment extends ListFragment
             MoreObjects.firstNonNull(blockedNumbersMigratorForTest,
                 new BlockedNumbersMigrator(getContext().getContentResolver()))
                 .migrate(new Listener() {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onComplete() {
                         getContext().startActivity(
@@ -240,21 +235,6 @@ public class BlockedNumbersFragment extends ListFragment
         }
     }
 
-    @Override
-    public void onVisualVoicemailEnabledStatusChanged(boolean newStatus){
-        updateActiveVoicemailProvider();
-    }
-
-    private void updateActiveVoicemailProvider(){
-        if (getActivity() == null || getActivity().isFinishing()) {
-            return;
-        }
-        if (mVoicemailEnabledChecker.isVisualVoicemailEnabled()) {
-            footerText.setText(R.string.block_number_footer_message_vvm);
-        } else {
-            footerText.setText(R.string.block_number_footer_message_no_vvm);
-        }
-    }
 
     @NeededForTesting
     void setBlockedNumbersMigratorForTest(BlockedNumbersMigrator blockedNumbersMigrator) {

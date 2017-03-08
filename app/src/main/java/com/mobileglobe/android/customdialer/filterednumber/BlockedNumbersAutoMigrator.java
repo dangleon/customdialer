@@ -19,9 +19,9 @@ package com.mobileglobe.android.customdialer.filterednumber;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.android.dialer.compat.FilteredNumberCompat;
-import com.android.dialer.database.FilteredNumberAsyncQueryHandler;
-import com.android.dialer.database.FilteredNumberAsyncQueryHandler.OnHasBlockedNumbersListener;
+import com.mobileglobe.android.customdialer.compat.FilteredNumberCompat;
+import com.mobileglobe.android.customdialer.database.FilteredNumberAsyncQueryHandler;
+import com.mobileglobe.android.customdialer.database.FilteredNumberAsyncQueryHandler.OnHasBlockedNumbersListener;
 import com.google.common.base.Preconditions;
 
 /**

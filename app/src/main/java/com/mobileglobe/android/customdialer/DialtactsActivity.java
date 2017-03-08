@@ -57,18 +57,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mobileglobe.android.customdialer.common.activity.TransactionSafeActivity;
-import com.mobileglobe.android.customdialer.common.animation.AnimUtils;
-import com.google.common.annotations.VisibleForTesting;
-import com.mobileglobe.android.customdialer.common.animation.AnimationListenerAdapter;
 import com.mobileglobe.android.customdialer.common.dialog.ClearFrequentsDialog;
-import com.mobileglobe.android.customdialer.common.dialpad.DialpadFragment;
+//import com.mobileglobe.android.customdialer.common.interactions.ImportExportDialogFragment;
 import com.mobileglobe.android.customdialer.common.interactions.TouchPointManager;
 import com.mobileglobe.android.customdialer.common.list.OnPhoneNumberPickerActionListener;
-import com.mobileglobe.android.customdialer.common.logging.Logger;
-import com.mobileglobe.android.customdialer.common.logging.ScreenEvent;
 import com.mobileglobe.android.customdialer.common.util.PermissionsUtil;
 import com.mobileglobe.android.customdialer.common.widget.FloatingActionButtonController;
+//import com.mobileglobe.android.customdialer.calllog.CallLogActivity;
+//import com.mobileglobe.android.customdialer.calllog.CallLogFragment;
 import com.mobileglobe.android.customdialer.database.DialerDatabaseHelper;
+import com.mobileglobe.android.customdialer.dialpad.DialpadFragment;
+import com.mobileglobe.android.customdialer.dialpad.SmartDialNameMatcher;
+import com.mobileglobe.android.customdialer.dialpad.SmartDialPrefix;
+import com.mobileglobe.android.customdialer.interactions.PhoneNumberInteraction;
 import com.mobileglobe.android.customdialer.list.DragDropController;
 import com.mobileglobe.android.customdialer.list.ListsFragment;
 import com.mobileglobe.android.customdialer.list.OnDragDropListener;
@@ -78,11 +79,22 @@ import com.mobileglobe.android.customdialer.list.RegularSearchFragment;
 import com.mobileglobe.android.customdialer.list.SearchFragment;
 import com.mobileglobe.android.customdialer.list.SmartDialSearchFragment;
 import com.mobileglobe.android.customdialer.list.SpeedDialFragment;
+import com.mobileglobe.android.customdialer.logging.Logger;
+import com.mobileglobe.android.customdialer.logging.ScreenEvent;
+//import com.mobileglobe.android.customdialer.settings.DialerSettingsActivity;
+import com.mobileglobe.android.customdialer.util.Assert;
 import com.mobileglobe.android.customdialer.util.DialerUtils;
 import com.mobileglobe.android.customdialer.util.IntentUtil;
+import com.mobileglobe.android.customdialer.util.IntentUtil.CallIntentBuilder;
 import com.mobileglobe.android.customdialer.util.TelecomUtil;
+//import com.mobileglobe.android.customdialer.voicemail.VoicemailArchiveActivity;
 import com.mobileglobe.android.customdialer.widget.ActionBarController;
 import com.mobileglobe.android.customdialer.widget.SearchEditTextLayout;
+import com.mobileglobe.android.customdialer.dialerbind.DatabaseHelperManager;
+import com.mobileglobe.android.customdialer.dialerbind.ObjectFactory;
+import com.mobileglobe.android.customdialer.common.animation.AnimUtils;
+import com.mobileglobe.android.customdialer.common.animation.AnimationListenerAdapter;
+import com.google.common.annotations.VisibleForTesting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,7 +117,7 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
 
     public static final boolean DEBUG = false;
 
-    public static final String SHARED_PREFS_NAME = "com.android.dialer_preferences";
+    public static final String SHARED_PREFS_NAME = "com.mobileglobe.android.customdialer_preferences";
 
     private static final String KEY_IN_REGULAR_SEARCH_UI = "in_regular_search_ui";
     private static final String KEY_IN_DIALPAD_SEARCH_UI = "in_dialpad_search_ui";
@@ -605,10 +617,6 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
         }
     }
 
-    protected void handleMenuSettings() {
-        final Intent intent = new Intent(this, DialerSettingsActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     public void onClick(View view) {
@@ -647,40 +655,11 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
         }
 
         int resId = item.getItemId();
-        if (resId == R.id.menu_history) {// Use explicit CallLogActivity intent instead of ACTION_VIEW +
-            // CONTENT_TYPE, so that we always open our call log from our dialer
-            final Intent intent = new Intent(this, CallLogActivity.class);
-            startActivity(intent);
-        } else if (resId == R.id.menu_add_contact) {
+        if (resId == R.id.menu_add_contact) {
             DialerUtils.startActivityWithErrorToast(
                     this,
                     IntentUtil.getNewContactIntent(),
                     R.string.add_contact_not_available);
-        } else if (resId == R.id.menu_import_export) {// We hard-code the "contactsAreAvailable" argument because doing it properly would
-            // involve querying a {@link ProviderStatusLoader}, which we don't want to do right
-            // now in Dialtacts for (potential) performance reasons. Compare with how it is
-            // done in {@link PeopleActivity}.
-            if (mListsFragment.getCurrentTabIndex() == ListsFragment.TAB_INDEX_SPEED_DIAL) {
-                ImportExportDialogFragment.show(getFragmentManager(), true,
-                        DialtactsActivity.class, ImportExportDialogFragment.EXPORT_MODE_FAVORITES);
-            } else {
-                ImportExportDialogFragment.show(getFragmentManager(), true,
-                        DialtactsActivity.class, ImportExportDialogFragment.EXPORT_MODE_DEFAULT);
-            }
-            Logger.logScreenView(ScreenEvent.IMPORT_EXPORT_CONTACTS, this);
-            return true;
-        } else if (resId == R.id.menu_clear_frequents) {
-            ClearFrequentsDialog.show(getFragmentManager());
-            Logger.logScreenView(ScreenEvent.CLEAR_FREQUENTS, this);
-            return true;
-        } else if (resId == R.id.menu_call_settings) {
-            handleMenuSettings();
-            Logger.logScreenView(ScreenEvent.SETTINGS, this);
-            return true;
-        } else if (resId == R.id.menu_archive) {
-            final Intent intent = new Intent(this, VoicemailArchiveActivity.class);
-            startActivity(intent);
-            return true;
         }
         return false;
     }
@@ -708,9 +687,9 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
      * Update the number of unread voicemails (potentially other tabs) displayed next to the tab
      * icon.
      */
-    public void updateTabUnreadCounts() {
+    /*public void updateTabUnreadCounts() {
         mListsFragment.updateTabUnreadCounts();
-    }
+    }*/
 
     /**
      * Initiates a fragment transaction to show the dialpad fragment. Animations and other visual
@@ -1179,13 +1158,14 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
             mSearchView.setText(normalizedQuery);
         }
 
+        /* no need for this
         try {
             if (mDialpadFragment != null && mDialpadFragment.isVisible()) {
                 mDialpadFragment.process_quote_emergency_unquote(normalizedQuery);
             }
         } catch (Exception ignored) {
             // Skip any exceptions for this piece of code
-        }
+        }*/
     }
 
     @Override
@@ -1270,7 +1250,7 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
     /**
      * Implemented to satisfy {@link CallLogFragment.HostInterface}
      */
-    @Override
+    //@Override
     public void showDialpad() {
         showDialpadFragment(true);
     }

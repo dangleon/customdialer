@@ -31,20 +31,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.contacts.common.list.ViewPagerTabs;
-import com.android.dialer.DialtactsActivity;
-import com.android.dialer.R;
-import com.android.dialer.calllog.CallLogFragment;
-import com.android.dialer.calllog.CallLogNotificationsHelper;
-import com.android.dialer.calllog.CallLogQueryHandler;
-import com.android.dialer.calllog.VisualVoicemailCallLogFragment;
-import com.android.dialer.logging.Logger;
-import com.android.dialer.logging.ScreenEvent;
-import com.android.dialer.util.DialerUtils;
-import com.android.dialer.voicemail.VisualVoicemailEnabledChecker;
-import com.android.dialer.voicemail.VoicemailStatusHelper;
-import com.android.dialer.voicemail.VoicemailStatusHelperImpl;
-import com.android.dialer.widget.ActionBarController;
+import com.mobileglobe.android.customdialer.common.list.ViewPagerTabs;
+import com.mobileglobe.android.customdialer.DialtactsActivity;
+import com.mobileglobe.android.customdialer.R;
+import com.mobileglobe.android.customdialer.logging.Logger;
+import com.mobileglobe.android.customdialer.util.DialerUtils;
+import com.mobileglobe.android.customdialer.widget.ActionBarController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,16 +75,14 @@ public class ListsFragment extends Fragment
     private View mRemoveViewContent;
 
     private SpeedDialFragment mSpeedDialFragment;
-    private CallLogFragment mHistoryFragment;
     private AllContactsFragment mAllContactsFragment;
-    private CallLogFragment mVoicemailFragment;
+
 
     private SharedPreferences mPrefs;
     private boolean mHasActiveVoicemailProvider;
     private boolean mHasFetchedVoicemailStatus;
     private boolean mShowVoicemailTabAfterVoicemailStatusIsFetched;
 
-    private VoicemailStatusHelper mVoicemailStatusHelper;
     private ArrayList<OnPageChangeListener> mOnPageChangeListeners =
             new ArrayList<OnPageChangeListener>();
 
@@ -126,15 +116,9 @@ public class ListsFragment extends Fragment
                 case TAB_INDEX_SPEED_DIAL:
                     mSpeedDialFragment = new SpeedDialFragment();
                     return mSpeedDialFragment;
-                case TAB_INDEX_HISTORY:
-                    mHistoryFragment = new CallLogFragment(CallLogQueryHandler.CALL_TYPE_ALL);
-                    return mHistoryFragment;
                 case TAB_INDEX_ALL_CONTACTS:
                     mAllContactsFragment = new AllContactsFragment();
                     return mAllContactsFragment;
-                case TAB_INDEX_VOICEMAIL:
-                    mVoicemailFragment = new VisualVoicemailCallLogFragment();
-                    return mVoicemailFragment;
             }
             throw new IllegalStateException("No fragment at position " + position);
         }
@@ -148,12 +132,8 @@ public class ListsFragment extends Fragment
                     (Fragment) super.instantiateItem(container, position);
             if (fragment instanceof SpeedDialFragment) {
                 mSpeedDialFragment = (SpeedDialFragment) fragment;
-            } else if (fragment instanceof CallLogFragment && position == TAB_INDEX_HISTORY) {
-                mHistoryFragment = (CallLogFragment) fragment;
             } else if (fragment instanceof AllContactsFragment) {
                 mAllContactsFragment = (AllContactsFragment) fragment;
-            } else if (fragment instanceof CallLogFragment && position == TAB_INDEX_VOICEMAIL) {
-                mVoicemailFragment = (CallLogFragment) fragment;
             }
             mFragments.set(position, fragment);
             return fragment;
@@ -190,12 +170,10 @@ public class ListsFragment extends Fragment
         Trace.beginSection(TAG + " onCreate");
         super.onCreate(savedInstanceState);
 
-        mVoicemailStatusHelper = new VoicemailStatusHelperImpl();
+
         mHasFetchedVoicemailStatus = false;
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        mHasActiveVoicemailProvider = mPrefs.getBoolean(
-                VisualVoicemailEnabledChecker.PREF_KEY_HAS_ACTIVE_VOICEMAIL_PROVIDER, false);
 
         Trace.endSection();
     }
@@ -210,11 +188,6 @@ public class ListsFragment extends Fragment
             sendScreenViewForCurrentPosition();
         }
 
-        // Fetch voicemail status to determine if we should show the voicemail tab.
-        mCallLogQueryHandler =
-                new CallLogQueryHandler(getActivity(), getActivity().getContentResolver(), this);
-        mCallLogQueryHandler.fetchVoicemailStatus();
-        mCallLogQueryHandler.fetchMissedCallsUnreadCount();
         Trace.endSection();
     }
 
@@ -387,29 +360,11 @@ public class ListsFragment extends Fragment
         mViewPagerTabs.updateTab(TAB_INDEX_HISTORY);
     }
 
-    @Override
-    public boolean onCallsFetched(Cursor statusCursor) {
-        // Return false; did not take ownership of cursor
-        return false;
-    }
 
     public int getCurrentTabIndex() {
         return mTabIndex;
     }
 
-    /**
-     * External method to update unread count because the unread count changes when the user
-     * expands a voicemail in the call log or when the user expands an unread call in the call
-     * history tab.
-     */
-    public void updateTabUnreadCounts() {
-        if (mCallLogQueryHandler != null) {
-            mCallLogQueryHandler.fetchMissedCallsUnreadCount();
-            if (mHasActiveVoicemailProvider) {
-                mCallLogQueryHandler.fetchVoicemailUnreadCount();
-            }
-        }
-    }
 
     /**
      * External method to mark all missed calls as read.
@@ -474,13 +429,5 @@ public class ListsFragment extends Fragment
                 return;
         }
         Logger.logScreenView(screenType, getActivity());
-    }
-
-    private void removeVoicemailFragment() {
-        if (mVoicemailFragment != null) {
-            getChildFragmentManager().beginTransaction().remove(mVoicemailFragment)
-                    .commitAllowingStateLoss();
-            mVoicemailFragment = null;
-        }
     }
 }

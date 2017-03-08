@@ -32,18 +32,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import com.android.contacts.common.compat.CompatUtils;
-import com.android.contacts.common.list.ContactEntryListAdapter;
-import com.android.contacts.common.list.ContactEntryListFragment;
-import com.android.contacts.common.list.ContactListFilter;
-import com.android.contacts.common.list.DefaultContactListAdapter;
-import com.android.contacts.common.util.PermissionsUtil;
-import com.android.contacts.common.util.ViewUtil;
+import com.mobileglobe.android.customdialer.common.compat.CompatUtils;
+import com.mobileglobe.android.customdialer.common.list.ContactEntryListAdapter;
+import com.mobileglobe.android.customdialer.common.list.ContactEntryListFragment;
+import com.mobileglobe.android.customdialer.common.list.ContactListFilter;
+import com.mobileglobe.android.customdialer.common.list.DefaultContactListAdapter;
+import com.mobileglobe.android.customdialer.common.util.PermissionsUtil;
+import com.mobileglobe.android.customdialer.common.util.ViewUtil;
 import com.android.dialer.R;
-import com.android.dialer.util.DialerUtils;
-import com.android.dialer.util.IntentUtil;
-import com.android.dialer.widget.EmptyContentView;
-import com.android.dialer.widget.EmptyContentView.OnEmptyViewActionButtonClickedListener;
+import com.mobileglobe.android.customdialer.util.DialerUtils;
+import com.mobileglobe.android.customdialer.util.IntentUtil;
+import com.mobileglobe.android.customdialer.widget.EmptyContentView;
+import com.mobileglobe.android.customdialer.widget.EmptyContentView.OnEmptyViewActionButtonClickedListener;
 
 import static android.Manifest.permission.READ_CONTACTS;
 

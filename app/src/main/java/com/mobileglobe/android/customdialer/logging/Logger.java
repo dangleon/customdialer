@@ -46,6 +46,27 @@ public abstract class Logger {
         }
     }
 
+    /**
+     * Logs an event indicating that a screen was displayed.
+     *
+     * @param screenType integer identifier of the displayed screen
+     * @param activity Parent activity of the displayed screen.
+     */
+    public static void logScreenView(int screenType, Activity activity) {
+        final Logger logger = getInstance();
+        if (logger != null) {
+            logger.logScreenViewImpl(screenType);
+        }
+
+        final String screenName = ScreenEvent.getScreenName(screenType);
+        if (!TextUtils.isEmpty(screenName)) {
+            AnalyticsUtil.sendScreenView(screenName, activity, null);
+        } else {
+            Log.w(TAG, "Unknown screenType: " + screenType);
+        }
+    }
+
+
 
     /**
      * Logs an interaction that occurred

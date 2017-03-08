@@ -39,4 +39,7 @@
 
     <!-- animation constants -->
     <integer name="dialpad_slide_in_duration">400</integer>
+
+    <!-- animation constants -->
+    <integer name="dialpad_slide_out_duration">400</integer>
 </resources>

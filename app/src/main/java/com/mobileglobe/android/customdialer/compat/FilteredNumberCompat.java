@@ -23,9 +23,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.UserManager;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.telecom.TelecomManager;
 import android.telephony.PhoneNumberUtils;
 import android.util.Log;
@@ -41,11 +43,11 @@ import com.mobileglobe.android.customdialer.database.FilteredNumberContract.Filt
 import com.mobileglobe.android.customdialer.database.FilteredNumberContract.FilteredNumberSources;
 import com.mobileglobe.android.customdialer.database.FilteredNumberContract.FilteredNumberTypes;
 import com.mobileglobe.android.customdialer.filterednumber.BlockNumberDialogFragment;
-import com.android.dialer.filterednumber.BlockNumberDialogFragment.Callback;
-import com.android.dialer.filterednumber.BlockedNumbersMigrator;
-import com.android.dialer.filterednumber.BlockedNumbersSettingsActivity;
-import com.android.dialer.filterednumber.MigrateBlockedNumbersDialogFragment;
-import com.android.dialerbind.ObjectFactory;
+import com.mobileglobe.android.customdialer.filterednumber.BlockNumberDialogFragment.Callback;
+import com.mobileglobe.android.customdialer.filterednumber.BlockedNumbersMigrator;
+import com.mobileglobe.android.customdialer.filterednumber.BlockedNumbersSettingsActivity;
+import com.mobileglobe.android.customdialer.filterednumber.MigrateBlockedNumbersDialogFragment;
+import com.mobileglobe.android.customdialer.dialerbind.ObjectFactory;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 
@@ -326,6 +328,7 @@ public class FilteredNumberCompat {
      * @param context The {@link Context}.
      * @return The intent.
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public static Intent createManageBlockedNumbersIntent(Context context) {
         if (canUseNewFiltering() && hasMigratedToNewBlocking()) {
             return TelecomManagerUtil.createManageBlockedNumbersIntent(

@@ -1,15 +1,35 @@
+/*
+ * Copyright (C) 2011 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.mobileglobe.android.customdialer.calllog;
 
-
-import com.google.common.collect.Lists;
 import android.provider.CallLog.Calls;
+
 import com.mobileglobe.android.customdialer.common.compat.CompatUtils;
+import com.mobileglobe.android.customdialer.compat.CallsSdkCompat;
 import com.mobileglobe.android.customdialer.compat.DialerCompatUtils;
+import com.google.common.collect.Lists;
+
 import java.util.List;
+
 /**
  * The query for the call log table.
  */
 public final class CallLogQuery {
+
     private static final String[] _PROJECTION_INTERNAL = new String[] {
             Calls._ID,                          // 0
             Calls.NUMBER,                       // 1
@@ -35,6 +55,7 @@ public final class CallLogQuery {
             Calls.DATA_USAGE,                   // 21
             Calls.TRANSCRIPTION,                // 22
     };
+
     public static final int ID = 0;
     public static final int NUMBER = 1;
     public static final int DATE = 2;
@@ -58,19 +79,23 @@ public final class CallLogQuery {
     public static final int FEATURES = 20;
     public static final int DATA_USAGE = 21;
     public static final int TRANSCRIPTION = 22;
+
     // Indices for columns that may not be available, depending on the Sdk Version
     /**
      * Only available in versions >= M
      * Call {@link DialerCompatUtils#isCallsCachedPhotoUriCompatible()} prior to use
      */
     public static int CACHED_PHOTO_URI = -1;
+
     /**
      * Only available in versions > M
      * Call {@link CompatUtils#isNCompatible()} prior to use
      */
     public static int POST_DIAL_DIGITS = -1;
     public static int VIA_NUMBER = -1;
+
     public static final String[] _PROJECTION;
+
     static {
         List<String> projectionList = Lists.newArrayList(_PROJECTION_INTERNAL);
         if (DialerCompatUtils.isCallsCachedPhotoUriCompatible()) {
@@ -85,4 +110,5 @@ public final class CallLogQuery {
         }
         _PROJECTION = projectionList.toArray(new String[projectionList.size()]);
     }
+
 }

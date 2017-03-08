@@ -225,7 +225,13 @@ background and text color. See also android:style/Widget.Holo.TextView.ListSepar
     </style>
 
 
-
+    <!-- Text style for tabs. -->
+    <style name="DialtactsActionBarTabTextStyle"
+        parent="android:style/Widget.Material.Light.ActionBar.TabText">
+        <item name="android:textColor">@color/tab_text_color</item>
+        <item name="android:textSize">@dimen/tab_text_size</item>
+        <item name="android:fontFamily">"sans-serif-medium"</item>
+    </style>
 
     <style name="DialpadKeyButtonStyle">
         <item name="android:soundEffectsEnabled">false</item>

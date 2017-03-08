@@ -18,12 +18,12 @@ package com.mobileglobe.android.customdialer.common.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-
+import android.support.v7.app.AppCompatActivity;
 /**
  * A common superclass that keeps track of whether an {@link Activity} has saved its state yet or
  * not.
  */
-public abstract class TransactionSafeActivity extends Activity {
+public abstract class TransactionSafeActivity extends AppCompatActivity {
 
     private boolean mIsSafeToCommitTransactions;
 

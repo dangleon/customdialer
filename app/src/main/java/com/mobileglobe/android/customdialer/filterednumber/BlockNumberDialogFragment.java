@@ -38,7 +38,6 @@ import com.mobileglobe.android.customdialer.database.FilteredNumberAsyncQueryHan
 import com.mobileglobe.android.customdialer.database.FilteredNumberAsyncQueryHandler.OnUnblockNumberListener;
 import com.mobileglobe.android.customdialer.logging.InteractionEvent;
 import com.mobileglobe.android.customdialer.logging.Logger;
-import com.mobileglobe.android.customdialer.voicemail.VisualVoicemailEnabledChecker;
 
 /**
  * Fragment for confirming and enacting blocking/unblocking a number. Also invokes snackbar
@@ -84,7 +83,6 @@ public class BlockNumberDialogFragment extends DialogFragment {
 
     private FilteredNumberAsyncQueryHandler mHandler;
     private View mParentView;
-    private VisualVoicemailEnabledChecker mVoicemailEnabledChecker;
     private Callback mCallback;
 
     public static void show(
@@ -142,7 +140,6 @@ public class BlockNumberDialogFragment extends DialogFragment {
         }
 
         mHandler = new FilteredNumberAsyncQueryHandler(getContext().getContentResolver());
-        mVoicemailEnabledChecker = new VisualVoicemailEnabledChecker(getActivity(), null);
       	/**
          * Choose not to update VoicemailEnabledChecker, as checks should already been done in
          * all current use cases.
@@ -165,9 +162,7 @@ public class BlockNumberDialogFragment extends DialogFragment {
             okText = getString(R.string.block_number_ok);
             if (FilteredNumberCompat.useNewFiltering()) {
                 message = getString(R.string.block_number_confirmation_message_new_filtering);
-            } else if (mVoicemailEnabledChecker.isVisualVoicemailEnabled()) {
-                message = getString(R.string.block_number_confirmation_message_vvm);
-            } else {
+            }  else {
                 message = getString(R.string.block_number_confirmation_message_no_vvm);
             }
         }

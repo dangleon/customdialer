@@ -1,8 +1,18 @@
-package com.mobileglobe.android.customdialer.calllog;
-
-/**
- * Created by dang on 2/10/17.
+/*
+ * Copyright (C) 2011 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
+
+package com.mobileglobe.android.customdialer.calllog;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -19,6 +29,7 @@ import android.support.annotation.Nullable;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.util.Log;
+
 import com.mobileglobe.android.customdialer.common.ContactsUtils;
 import com.mobileglobe.android.customdialer.common.ContactsUtils.UserType;
 import com.mobileglobe.android.customdialer.common.compat.CompatUtils;
@@ -31,21 +42,27 @@ import com.mobileglobe.android.customdialer.service.CachedNumberLookupService;
 import com.mobileglobe.android.customdialer.service.CachedNumberLookupService.CachedContactInfo;
 import com.mobileglobe.android.customdialer.util.TelecomUtil;
 import com.mobileglobe.android.customdialer.dialerbind.ObjectFactory;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 /**
  * Utility class to look up the contact information for a given number.
  */
 public class ContactInfoHelper {
     private static final String TAG = ContactInfoHelper.class.getSimpleName();
+
     private final Context mContext;
     private final String mCurrentCountryIso;
+
     private static final CachedNumberLookupService mCachedNumberLookupService =
             ObjectFactory.newCachedNumberLookupService();
+
     public ContactInfoHelper(Context context, String currentCountryIso) {
         mContext = context;
         mCurrentCountryIso = currentCountryIso;
     }
+
     /**
      * Returns the contact information for the given number.
      * <p>
@@ -62,7 +79,9 @@ public class ContactInfoHelper {
         if (TextUtils.isEmpty(number)) {
             return null;
         }
+
         ContactInfo info;
+
         if (PhoneNumberHelper.isUriNumber(number)) {
             // The number is a SIP address..
             info = lookupContactFromUri(getContactInfoLookupUri(number), true);
@@ -77,6 +96,7 @@ public class ContactInfoHelper {
             // Look for a contact that has the given phone number.
             info = queryContactInfoForPhoneNumber(number, countryIso, false);
         }
+
         final ContactInfo updatedInfo;
         if (info == null) {
             // The lookup failed.
@@ -97,6 +117,7 @@ public class ContactInfoHelper {
         }
         return updatedInfo;
     }
+
     /**
      * Creates a JSON-encoded lookup uri for a unknown number without an associated contact
      *
@@ -108,9 +129,11 @@ public class ContactInfoHelper {
         try {
             final JSONObject contactRows = new JSONObject().put(Phone.CONTENT_ITEM_TYPE,
                     new JSONObject().put(Phone.NUMBER, number).put(Phone.TYPE, Phone.TYPE_CUSTOM));
+
             final String jsonString = new JSONObject().put(Contacts.DISPLAY_NAME, number)
                     .put(Contacts.DISPLAY_NAME_SOURCE, DisplayNameSources.PHONE)
                     .put(Contacts.CONTENT_ITEM_TYPE, contactRows).toString();
+
             return Contacts.CONTENT_LOOKUP_URI
                     .buildUpon()
                     .appendPath(Constants.LOOKUP_URI_ENCODED)
@@ -122,6 +145,7 @@ public class ContactInfoHelper {
             return null;
         }
     }
+
     /**
      * Looks up a contact using the given URI.
      * <p>
@@ -138,6 +162,7 @@ public class ContactInfoHelper {
         if (!PermissionsUtil.hasContactsPermissions(mContext)) {
             return ContactInfo.EMPTY;
         }
+
         Cursor phoneLookupCursor = null;
         try {
             String[] projection = PhoneQuery.getPhoneLookupProjection(uri);
@@ -150,6 +175,7 @@ public class ContactInfoHelper {
         if (phoneLookupCursor == null) {
             return null;
         }
+
         try {
             if (!phoneLookupCursor.moveToFirst()) {
                 return ContactInfo.EMPTY;
@@ -163,6 +189,7 @@ public class ContactInfoHelper {
             phoneLookupCursor.close();
         }
     }
+
     private ContactInfo createPhoneLookupContactInfo(Cursor phoneLookupCursor, String lookupKey) {
         ContactInfo info = new ContactInfo();
         info.lookupKey = lookupKey;
@@ -178,8 +205,10 @@ public class ContactInfoHelper {
         info.formattedNumber = null;
         info.userType = ContactsUtils.determineUserType(null,
                 phoneLookupCursor.getLong(PhoneQuery.PERSON_ID));
+
         return info;
     }
+
     public static String lookUpDisplayNameAlternative(Context context, String lookupKey,
                                                       @UserType long userType) {
         // Query {@link Contacts#CONTENT_LOOKUP_URI} directly with work lookup key is not allowed.
@@ -191,6 +220,7 @@ public class ContactInfoHelper {
         try {
             cursor = context.getContentResolver().query(uri,
                     PhoneQuery.DISPLAY_NAME_ALTERNATIVE_PROJECTION, null, null, null);
+
             if (cursor != null && cursor.moveToFirst()) {
                 return cursor.getString(PhoneQuery.NAME_ALTERNATIVE);
             }
@@ -201,8 +231,10 @@ public class ContactInfoHelper {
                 cursor.close();
             }
         }
+
         return null;
     }
+
     /**
      * Determines the contact information for the given phone number.
      * <p>
@@ -217,6 +249,7 @@ public class ContactInfoHelper {
         if (TextUtils.isEmpty(number)) {
             return null;
         }
+
         ContactInfo info = lookupContactFromUri(getContactInfoLookupUri(number), isSip);
         if (info != null && info != ContactInfo.EMPTY) {
             info.formattedNumber = formatPhoneNumber(number, null, countryIso);
@@ -231,6 +264,7 @@ public class ContactInfoHelper {
         }
         return info;
     }
+
     /**
      * Format the given phone number
      *
@@ -254,6 +288,7 @@ public class ContactInfoHelper {
         }
         return PhoneNumberUtils.formatNumber(number, normalizedNumber, countryIso);
     }
+
     /**
      * Stores differences between the updated contact info and the current call log contact info.
      *
@@ -267,39 +302,48 @@ public class ContactInfoHelper {
         if (!PermissionsUtil.hasPermission(mContext, android.Manifest.permission.WRITE_CALL_LOG)) {
             return;
         }
+
         final ContentValues values = new ContentValues();
         boolean needsUpdate = false;
+
         if (callLogInfo != null) {
             if (!TextUtils.equals(updatedInfo.name, callLogInfo.name)) {
                 values.put(Calls.CACHED_NAME, updatedInfo.name);
                 needsUpdate = true;
             }
+
             if (updatedInfo.type != callLogInfo.type) {
                 values.put(Calls.CACHED_NUMBER_TYPE, updatedInfo.type);
                 needsUpdate = true;
             }
+
             if (!TextUtils.equals(updatedInfo.label, callLogInfo.label)) {
                 values.put(Calls.CACHED_NUMBER_LABEL, updatedInfo.label);
                 needsUpdate = true;
             }
+
             if (!UriUtils.areEqual(updatedInfo.lookupUri, callLogInfo.lookupUri)) {
                 values.put(Calls.CACHED_LOOKUP_URI, UriUtils.uriToString(updatedInfo.lookupUri));
                 needsUpdate = true;
             }
+
             // Only replace the normalized number if the new updated normalized number isn't empty.
             if (!TextUtils.isEmpty(updatedInfo.normalizedNumber) &&
                     !TextUtils.equals(updatedInfo.normalizedNumber, callLogInfo.normalizedNumber)) {
                 values.put(Calls.CACHED_NORMALIZED_NUMBER, updatedInfo.normalizedNumber);
                 needsUpdate = true;
             }
+
             if (!TextUtils.equals(updatedInfo.number, callLogInfo.number)) {
                 values.put(Calls.CACHED_MATCHED_NUMBER, updatedInfo.number);
                 needsUpdate = true;
             }
+
             if (updatedInfo.photoId != callLogInfo.photoId) {
                 values.put(Calls.CACHED_PHOTO_ID, updatedInfo.photoId);
                 needsUpdate = true;
             }
+
             final Uri updatedPhotoUriContactsOnly =
                     UriUtils.nullForNonContactsUri(updatedInfo.photoUri);
             if (DialerCompatUtils.isCallsCachedPhotoUriCompatible() &&
@@ -308,6 +352,7 @@ public class ContactInfoHelper {
                         UriUtils.uriToString(updatedPhotoUriContactsOnly));
                 needsUpdate = true;
             }
+
             if (!TextUtils.equals(updatedInfo.formattedNumber, callLogInfo.formattedNumber)) {
                 values.put(Calls.CACHED_FORMATTED_NUMBER, updatedInfo.formattedNumber);
                 needsUpdate = true;
@@ -328,9 +373,11 @@ public class ContactInfoHelper {
             values.put(Calls.CACHED_FORMATTED_NUMBER, updatedInfo.formattedNumber);
             needsUpdate = true;
         }
+
         if (!needsUpdate) {
             return;
         }
+
         try {
             if (countryIso == null) {
                 mContext.getContentResolver().update(
@@ -349,9 +396,11 @@ public class ContactInfoHelper {
             Log.e(TAG, "Unable to update contact info in call log db", e);
         }
     }
+
     public static Uri getContactInfoLookupUri(String number) {
         return getContactInfoLookupUri(number, -1);
     }
+
     public static Uri getContactInfoLookupUri(String number, long directoryId) {
         // Get URI for the number in the PhoneLookup table, with a parameter to indicate whether
         // the number is a SIP number.
@@ -368,13 +417,14 @@ public class ContactInfoHelper {
         Uri.Builder builder = uri.buildUpon()
                 .appendPath(number)
                 .appendQueryParameter(PhoneLookup.QUERY_PARAMETER_SIP_ADDRESS,
-                        String.valueOf(PhoneNumberHelper.isUriNumber(number)));
+                String.valueOf(PhoneNumberHelper.isUriNumber(number)));
         if (directoryId != -1) {
             builder.appendQueryParameter(ContactsContract.DIRECTORY_PARAM_KEY,
                     String.valueOf(directoryId));
         }
         return builder.build();
     }
+
     /**
      * Returns the contact information stored in an entry of the call log.
      *
@@ -391,6 +441,7 @@ public class ContactInfoHelper {
                 ? c.getString(CallLogQuery.POST_DIAL_DIGITS) : "";
         info.number = (matchedNumber == null) ?
                 c.getString(CallLogQuery.NUMBER) + postDialDigits : matchedNumber;
+
         info.normalizedNumber = c.getString(CallLogQuery.CACHED_NORMALIZED_NUMBER);
         info.photoId = c.getLong(CallLogQuery.CACHED_PHOTO_ID);
         info.photoUri = DialerCompatUtils.isCallsCachedPhotoUriCompatible() ?
@@ -398,8 +449,10 @@ public class ContactInfoHelper {
                         UriUtils.parseUriOrNull(c.getString(CallLogQuery.CACHED_PHOTO_URI)))
                 : null;
         info.formattedNumber = c.getString(CallLogQuery.CACHED_FORMATTED_NUMBER);
+
         return info;
     }
+
     /**
      * Given a contact's sourceType, return true if the contact is a business
      *
@@ -410,6 +463,7 @@ public class ContactInfoHelper {
         return mCachedNumberLookupService != null
                 && mCachedNumberLookupService.isBusiness(sourceType);
     }
+
     /**
      * This function looks at a contact's source and determines if the user can
      * mark caller ids from this source as invalid.

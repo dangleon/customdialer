@@ -36,18 +36,18 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Space;
 
-import com.android.contacts.common.list.ContactEntryListAdapter;
-import com.android.contacts.common.list.ContactListItemView;
-import com.android.contacts.common.list.OnPhoneNumberPickerActionListener;
-import com.android.contacts.common.list.PhoneNumberPickerFragment;
-import com.android.contacts.common.util.PermissionsUtil;
-import com.android.contacts.common.util.ViewUtil;
-import com.android.dialer.R;
-import com.android.dialer.dialpad.DialpadFragment.ErrorDialogFragment;
-import com.android.dialer.util.DialerUtils;
-import com.android.dialer.util.IntentUtil;
-import com.android.dialer.widget.EmptyContentView;
-import com.android.phone.common.animation.AnimUtils;
+import com.mobileglobe.android.customdialer.common.list.ContactEntryListAdapter;
+import com.mobileglobe.android.customdialer.common.list.ContactListItemView;
+import com.mobileglobe.android.customdialer.common.list.OnPhoneNumberPickerActionListener;
+import com.mobileglobe.android.customdialer.common.list.PhoneNumberPickerFragment;
+import com.mobileglobe.android.customdialer.common.util.PermissionsUtil;
+import com.mobileglobe.android.customdialer.common.util.ViewUtil;
+import com.mobileglobe.android.customdialer.R;
+import com.mobileglobe.android.customdialer.dialpad.DialpadFragment.ErrorDialogFragment;
+import com.mobileglobe.android.customdialer.util.DialerUtils;
+import com.mobileglobe.android.customdialer.util.IntentUtil;
+import com.mobileglobe.android.customdialer.widget.EmptyContentView;
+import com.mobileglobe.android.customdialer.common.animation.AnimUtils;
 
 public class SearchFragment extends PhoneNumberPickerFragment {
     private static final String TAG  = SearchFragment.class.getSimpleName();
