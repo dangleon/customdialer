@@ -1375,7 +1375,7 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
 
     private void updateMissedCalls() {
         if (mPreviouslySelectedTabIndex == ListsFragment.TAB_INDEX_HISTORY) {
-            mListsFragment.markMissedCallsAsReadAndRemoveNotifications();
+            //mListsFragment.markMissedCallsAsReadAndRemoveNotifications();
         }
     }
 }

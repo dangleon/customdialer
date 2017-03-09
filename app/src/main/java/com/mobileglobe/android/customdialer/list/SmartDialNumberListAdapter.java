@@ -24,12 +24,12 @@ import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.contacts.common.CallUtil;
-import com.android.contacts.common.list.ContactListItemView;
-import com.android.dialer.dialpad.SmartDialCursorLoader;
-import com.android.dialer.dialpad.SmartDialMatchPosition;
-import com.android.dialer.dialpad.SmartDialNameMatcher;
-import com.android.dialer.dialpad.SmartDialPrefix;
+import com.mobileglobe.android.customdialer.common.CallUtil;
+import com.mobileglobe.android.customdialer.common.list.ContactListItemView;
+import com.mobileglobe.android.customdialer.dialpad.SmartDialCursorLoader;
+import com.mobileglobe.android.customdialer.dialpad.SmartDialMatchPosition;
+import com.mobileglobe.android.customdialer.dialpad.SmartDialNameMatcher;
+import com.mobileglobe.android.customdialer.dialpad.SmartDialPrefix;
 
 import java.util.ArrayList;
 

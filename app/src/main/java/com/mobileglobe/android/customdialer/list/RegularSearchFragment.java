@@ -26,10 +26,10 @@ import com.mobileglobe.android.customdialer.common.list.PinnedHeaderListView;
 import com.mobileglobe.android.customdialer.common.util.PermissionsUtil;
 import com.mobileglobe.android.customdialer.R;
 import com.mobileglobe.android.customdialer.service.CachedNumberLookupService;
-import com.android.dialer.widget.EmptyContentView;
-import com.android.dialer.widget.EmptyContentView.OnEmptyViewActionButtonClickedListener;
-import com.android.dialerbind.ObjectFactory;
-import com.android.incallui.Call.LogState;
+import com.mobileglobe.android.customdialer.widget.EmptyContentView;
+import com.mobileglobe.android.customdialer.widget.EmptyContentView.OnEmptyViewActionButtonClickedListener;
+import com.mobileglobe.android.customdialer.dialerbind.ObjectFactory;
+import com.mobileglobe.android.customdialer.incallui.Call.LogState;
 
 import static android.Manifest.permission.READ_CONTACTS;
 

@@ -18,18 +18,18 @@ package com.mobileglobe.android.customdialer.dialerbind;
 
 import android.content.Context;
 
-import static com.mobileglobe.android.customdialer.calllog.CallLogAdapter.CallFetcher;
+//import static com.mobileglobe.android.customdialer.calllog.CallLogAdapter.CallFetcher;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
 
-import com.mobileglobe.android.customdialer.calllog.CallLogAdapter;
+//import com.mobileglobe.android.customdialer.calllog.CallLogAdapter;
 import com.mobileglobe.android.customdialer.calllog.ContactInfoHelper;
 import com.mobileglobe.android.customdialer.list.RegularSearchFragment;
 import com.mobileglobe.android.customdialer.logging.Logger;
 import com.mobileglobe.android.customdialer.service.CachedNumberLookupService;
 import com.mobileglobe.android.customdialer.service.ExtendedBlockingButtonRenderer;
-import com.mobileglobe.android.customdialer.voicemail.VoicemailPlaybackPresenter;
+//import com.mobileglobe.android.customdialer.voicemail.VoicemailPlaybackPresenter;
 
 /**
  * Default static binding for various objects.
@@ -74,6 +74,7 @@ public class ObjectFactory {
      * @param contactInfoHelper Instance of contact info helper class to use.
      * @return Instance of CallLogAdapter.
      */
+    /*
     public static CallLogAdapter newCallLogAdapter(
             Context context,
             CallFetcher callFetcher,
@@ -86,7 +87,7 @@ public class ObjectFactory {
                 contactInfoHelper,
                 voicemailPlaybackPresenter,
                 activityType);
-    }
+    }*/
 
     public static Logger getLoggerInstance() {
         // no-op

@@ -45,7 +45,7 @@
         android:layout_height="@dimen/floating_action_button_height"
         android:layout_marginBottom="@dimen/floating_action_button_margin_bottom"
         android:layout_gravity="center_horizontal|bottom"
-        app:layout_behavior="com.android.dialer.FloatingActionButtonBehavior">
+        app:layout_behavior="com.mobileglobe.android.customdialer.FloatingActionButtonBehavior">
 
         <ImageButton
             android:id="@+id/floating_action_button"

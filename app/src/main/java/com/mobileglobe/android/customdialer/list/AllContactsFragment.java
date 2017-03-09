@@ -39,7 +39,7 @@ import com.mobileglobe.android.customdialer.common.list.ContactListFilter;
 import com.mobileglobe.android.customdialer.common.list.DefaultContactListAdapter;
 import com.mobileglobe.android.customdialer.common.util.PermissionsUtil;
 import com.mobileglobe.android.customdialer.common.util.ViewUtil;
-import com.android.dialer.R;
+import com.mobileglobe.android.customdialer.R;
 import com.mobileglobe.android.customdialer.util.DialerUtils;
 import com.mobileglobe.android.customdialer.util.IntentUtil;
 import com.mobileglobe.android.customdialer.widget.EmptyContentView;

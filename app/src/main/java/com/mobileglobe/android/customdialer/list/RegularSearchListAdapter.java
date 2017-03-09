@@ -20,14 +20,14 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import com.android.contacts.common.CallUtil;
-import com.android.contacts.common.ContactsUtils;
-import com.android.contacts.common.compat.DirectoryCompat;
-import com.android.contacts.common.list.DirectoryPartition;
-import com.android.contacts.common.util.PhoneNumberHelper;
-import com.android.dialer.calllog.ContactInfo;
-import com.android.dialer.service.CachedNumberLookupService;
-import com.android.dialer.service.CachedNumberLookupService.CachedContactInfo;
+import com.mobileglobe.android.customdialer.common.CallUtil;
+import com.mobileglobe.android.customdialer.common.ContactsUtils;
+import com.mobileglobe.android.customdialer.common.compat.DirectoryCompat;
+import com.mobileglobe.android.customdialer.common.list.DirectoryPartition;
+import com.mobileglobe.android.customdialer.common.util.PhoneNumberHelper;
+import com.mobileglobe.android.customdialer.calllog.ContactInfo;
+import com.mobileglobe.android.customdialer.service.CachedNumberLookupService;
+import com.mobileglobe.android.customdialer.service.CachedNumberLookupService.CachedContactInfo;
 
 /**
  * List adapter to display regular search results.

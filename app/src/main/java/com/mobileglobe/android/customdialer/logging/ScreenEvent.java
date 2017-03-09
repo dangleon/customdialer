@@ -18,13 +18,13 @@ package com.mobileglobe.android.customdialer.logging;
 import android.text.TextUtils;
 
 import com.mobileglobe.android.customdialer.common.dialog.ClearFrequentsDialog;
-import com.mobileglobe.android.customdialer.common.dialpad.DialpadFragment;
 import com.mobileglobe.android.customdialer.filterednumber.BlockedNumbersFragment;
 import com.mobileglobe.android.customdialer.list.AllContactsFragment;
 import com.mobileglobe.android.customdialer.list.BlockedListSearchFragment;
 import com.mobileglobe.android.customdialer.list.RegularSearchFragment;
 import com.mobileglobe.android.customdialer.list.SmartDialSearchFragment;
 import com.mobileglobe.android.customdialer.list.SpeedDialFragment;
+import com.mobileglobe.android.customdialer.dialpad.DialpadFragment;
 
 import java.util.HashMap;
 import java.util.Map;

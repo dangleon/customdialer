@@ -21,6 +21,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
+import com.mobileglobe.android.customdialer.R;
 import com.mobileglobe.android.customdialer.common.util.ViewUtil;
 
 

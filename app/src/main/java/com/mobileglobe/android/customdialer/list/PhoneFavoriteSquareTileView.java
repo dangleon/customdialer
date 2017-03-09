@@ -24,9 +24,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.android.contacts.common.compat.CompatUtils;
-import com.android.contacts.common.list.ContactEntry;
-import com.android.dialer.R;
+import com.mobileglobe.android.customdialer.common.compat.CompatUtils;
+import com.mobileglobe.android.customdialer.common.list.ContactEntry;
+import com.mobileglobe.android.customdialer.R;
 
 /**
  * Displays the contact's picture overlaid with their name and number type in a tile.

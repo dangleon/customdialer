@@ -23,12 +23,12 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.android.contacts.common.ContactPhotoManager;
-import com.android.contacts.common.ContactPhotoManager.DefaultImageRequest;
-import com.android.contacts.common.MoreContactUtils;
-import com.android.contacts.common.list.ContactEntry;
-import com.android.contacts.common.list.ContactTileView;
-import com.android.dialer.R;
+import com.mobileglobe.android.customdialer.common.ContactPhotoManager;
+import com.mobileglobe.android.customdialer.common.ContactPhotoManager.DefaultImageRequest;
+import com.mobileglobe.android.customdialer.common.MoreContactUtils;
+import com.mobileglobe.android.customdialer.common.list.ContactEntry;
+import com.mobileglobe.android.customdialer.common.list.ContactTileView;
+import com.mobileglobe.android.customdialer.R;
 
 /**
  * A light version of the {@link com.android.contacts.common.list.ContactTileView} that is used in

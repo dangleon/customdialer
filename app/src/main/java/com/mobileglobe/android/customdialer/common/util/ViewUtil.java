@@ -18,12 +18,16 @@ package com.mobileglobe.android.customdialer.common.util;
 
 import android.content.res.Resources;
 import android.graphics.Outline;
+import android.graphics.Paint;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
+import com.mobileglobe.android.customdialer.R;
 import com.mobileglobe.android.customdialer.common.compat.CompatUtils;
 
 /**
@@ -123,5 +127,17 @@ public class ViewUtil {
         listView.setPaddingRelative(listView.getPaddingStart(), listView.getPaddingTop(),
                 listView.getPaddingEnd(), listView.getPaddingBottom() + fabPadding);
         listView.setClipToPadding(false);
+    }
+
+    public static void resizeText(TextView textView, int originalTextSize, int minTextSize) {
+        final Paint paint = textView.getPaint();
+        final int width = textView.getWidth();
+        if (width == 0) return;
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, originalTextSize);
+        float ratio = width / paint.measureText(textView.getText().toString());
+        if (ratio <= 1.0f) {
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                    Math.max(minTextSize, originalTextSize * ratio));
+        }
     }
 }

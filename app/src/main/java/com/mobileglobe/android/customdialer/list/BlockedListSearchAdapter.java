@@ -20,10 +20,10 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.view.View;
 
-import com.android.contacts.common.GeoUtil;
-import com.android.contacts.common.list.ContactListItemView;
-import com.android.dialer.R;
-import com.android.dialer.database.FilteredNumberAsyncQueryHandler;
+import com.mobileglobe.android.customdialer.common.GeoUtil;
+import com.mobileglobe.android.customdialer.common.list.ContactListItemView;
+import com.mobileglobe.android.customdialer.R;
+import com.mobileglobe.android.customdialer.database.FilteredNumberAsyncQueryHandler;
 
 /**
  * List adapter to display search results for adding a blocked number.

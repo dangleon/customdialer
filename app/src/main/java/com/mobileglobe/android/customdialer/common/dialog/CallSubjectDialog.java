@@ -52,6 +52,7 @@ import com.mobileglobe.android.customdialer.R;
 import com.mobileglobe.android.customdialer.common.animation.AnimUtils;
 import com.mobileglobe.android.customdialer.common.compat.CompatUtils;
 import com.mobileglobe.android.customdialer.common.compat.*;
+import com.mobileglobe.android.customdialer.common.compat.telecom.TelecomManagerCompat;
 import com.mobileglobe.android.customdialer.common.util.UriUtils;
 
 import java.nio.charset.Charset;

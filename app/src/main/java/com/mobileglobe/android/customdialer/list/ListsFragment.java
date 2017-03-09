@@ -35,6 +35,7 @@ import com.mobileglobe.android.customdialer.common.list.ViewPagerTabs;
 import com.mobileglobe.android.customdialer.DialtactsActivity;
 import com.mobileglobe.android.customdialer.R;
 import com.mobileglobe.android.customdialer.logging.Logger;
+import com.mobileglobe.android.customdialer.logging.ScreenEvent;
 import com.mobileglobe.android.customdialer.util.DialerUtils;
 import com.mobileglobe.android.customdialer.widget.ActionBarController;
 
@@ -50,7 +51,7 @@ import java.util.List;
  * screen.
  */
 public class ListsFragment extends Fragment
-        implements ViewPager.OnPageChangeListener, CallLogQueryHandler.Listener {
+        implements ViewPager.OnPageChangeListener {
 
     private static final boolean DEBUG = DialtactsActivity.DEBUG;
     private static final String TAG = "ListsFragment";
@@ -93,7 +94,6 @@ public class ListsFragment extends Fragment
      * The position of the currently selected tab.
      */
     private int mTabIndex = TAB_INDEX_SPEED_DIAL;
-    private CallLogQueryHandler mCallLogQueryHandler;
 
     public class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragments = new ArrayList<>();
@@ -288,93 +288,13 @@ public class ListsFragment extends Fragment
         }
     }
 
-    @Override
-    public void onVoicemailStatusFetched(Cursor statusCursor) {
-        mHasFetchedVoicemailStatus = true;
 
-        if (getActivity() == null || getActivity().isFinishing()) {
-            return;
-        }
-
-        // Update mHasActiveVoicemailProvider, which controls the number of tabs displayed.
-        boolean hasActiveVoicemailProvider =
-                mVoicemailStatusHelper.getNumberActivityVoicemailSources(statusCursor) > 0;
-        if (hasActiveVoicemailProvider != mHasActiveVoicemailProvider) {
-            mHasActiveVoicemailProvider = hasActiveVoicemailProvider;
-            mViewPagerAdapter.notifyDataSetChanged();
-
-            if (hasActiveVoicemailProvider) {
-                mViewPagerTabs.updateTab(TAB_INDEX_VOICEMAIL);
-            } else {
-                mViewPagerTabs.removeTab(TAB_INDEX_VOICEMAIL);
-                removeVoicemailFragment();
-            }
-
-            mPrefs.edit()
-                  .putBoolean(VisualVoicemailEnabledChecker.PREF_KEY_HAS_ACTIVE_VOICEMAIL_PROVIDER,
-                          hasActiveVoicemailProvider)
-                  .commit();
-        }
-
-        if (hasActiveVoicemailProvider) {
-            mCallLogQueryHandler.fetchVoicemailUnreadCount();
-        }
-
-        if (mHasActiveVoicemailProvider && mShowVoicemailTabAfterVoicemailStatusIsFetched) {
-            mShowVoicemailTabAfterVoicemailStatusIsFetched = false;
-            showTab(TAB_INDEX_VOICEMAIL);
-        }
-    }
-
-    @Override
-    public void onVoicemailUnreadCountFetched(Cursor cursor) {
-        if (getActivity() == null || getActivity().isFinishing() || cursor == null) {
-            return;
-        }
-
-        int count = 0;
-        try {
-            count = cursor.getCount();
-        } finally {
-            cursor.close();
-        }
-
-        mViewPagerTabs.setUnreadCount(count, TAB_INDEX_VOICEMAIL);
-        mViewPagerTabs.updateTab(TAB_INDEX_VOICEMAIL);
-    }
-
-    @Override
-    public void onMissedCallsUnreadCountFetched(Cursor cursor) {
-        if (getActivity() == null || getActivity().isFinishing() || cursor == null) {
-            return;
-        }
-
-        int count = 0;
-        try {
-            count = cursor.getCount();
-        } finally {
-            cursor.close();
-        }
-
-        mViewPagerTabs.setUnreadCount(count, TAB_INDEX_HISTORY);
-        mViewPagerTabs.updateTab(TAB_INDEX_HISTORY);
-    }
 
 
     public int getCurrentTabIndex() {
         return mTabIndex;
     }
 
-
-    /**
-     * External method to mark all missed calls as read.
-     */
-    public void markMissedCallsAsReadAndRemoveNotifications() {
-        if (mCallLogQueryHandler != null) {
-            mCallLogQueryHandler.markMissedCallsAsRead();
-            CallLogNotificationsHelper.removeMissedCallNotifications(getActivity());
-        }
-    }
 
 
     public void showRemoveView(boolean show) {

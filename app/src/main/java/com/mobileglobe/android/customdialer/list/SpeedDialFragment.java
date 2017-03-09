@@ -45,14 +45,14 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.android.contacts.common.ContactPhotoManager;
-import com.android.contacts.common.ContactTileLoaderFactory;
-import com.android.contacts.common.list.ContactTileView;
-import com.android.contacts.common.list.OnPhoneNumberPickerActionListener;
-import com.android.contacts.common.util.PermissionsUtil;
-import com.android.dialer.R;
-import com.android.dialer.widget.EmptyContentView;
-import com.android.incallui.Call.LogState;
+import com.mobileglobe.android.customdialer.common.ContactPhotoManager;
+import com.mobileglobe.android.customdialer.common.ContactTileLoaderFactory;
+import com.mobileglobe.android.customdialer.common.list.ContactTileView;
+import com.mobileglobe.android.customdialer.common.list.OnPhoneNumberPickerActionListener;
+import com.mobileglobe.android.customdialer.common.util.PermissionsUtil;
+import com.mobileglobe.android.customdialer.R;
+import com.mobileglobe.android.customdialer.widget.EmptyContentView;
+import com.mobileglobe.android.customdialer.incallui.Call.LogState;
 
 import java.util.ArrayList;
 import java.util.HashMap;

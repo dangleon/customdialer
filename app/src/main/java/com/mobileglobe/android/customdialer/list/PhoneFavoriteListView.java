@@ -32,8 +32,8 @@ import android.view.ViewConfiguration;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.android.dialer.R;
-import com.android.dialer.list.DragDropController.DragItemContainer;
+import com.mobileglobe.android.customdialer.R;
+import com.mobileglobe.android.customdialer.list.DragDropController.DragItemContainer;
 
 /**
  * Viewgroup that presents the user's speed dial contacts in a grid.

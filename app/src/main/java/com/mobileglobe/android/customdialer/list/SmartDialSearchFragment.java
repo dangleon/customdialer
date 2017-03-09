@@ -22,12 +22,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v13.app.FragmentCompat;
 
-import com.android.contacts.common.list.ContactEntryListAdapter;
-import com.android.contacts.common.util.PermissionsUtil;
-import com.android.dialer.R;
-import com.android.dialer.dialpad.SmartDialCursorLoader;
-import com.android.dialer.widget.EmptyContentView;
-import com.android.incallui.Call.LogState;
+import com.mobileglobe.android.customdialer.common.list.ContactEntryListAdapter;
+import com.mobileglobe.android.customdialer.common.util.PermissionsUtil;
+import com.mobileglobe.android.customdialer.R;
+import com.mobileglobe.android.customdialer.dialpad.SmartDialCursorLoader;
+import com.mobileglobe.android.customdialer.widget.EmptyContentView;
+import com.mobileglobe.android.customdialer.incallui.Call.LogState;
 
 import static android.Manifest.permission.CALL_PHONE;
 

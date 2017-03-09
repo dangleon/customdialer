@@ -2,7 +2,7 @@ package com.mobileglobe.android.customdialer.list;
 
 import android.view.View;
 
-import com.android.contacts.common.compat.CompatUtils;
+import com.mobileglobe.android.customdialer.common.compat.CompatUtils;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -30,16 +30,16 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.contacts.common.GeoUtil;
-import com.android.contacts.common.list.ContactEntryListAdapter;
-import com.android.contacts.common.util.ContactDisplayUtils;
-import com.android.dialer.R;
-import com.android.dialer.database.FilteredNumberAsyncQueryHandler;
-import com.android.dialer.database.FilteredNumberAsyncQueryHandler.OnCheckBlockedListener;
-import com.android.dialer.filterednumber.BlockNumberDialogFragment;
-import com.android.dialer.logging.InteractionEvent;
-import com.android.dialer.logging.Logger;
-import com.android.dialer.widget.SearchEditTextLayout;
+import com.mobileglobe.android.customdialer.common.GeoUtil;
+import com.mobileglobe.android.customdialer.common.list.ContactEntryListAdapter;
+import com.mobileglobe.android.customdialer.common.util.ContactDisplayUtils;
+import com.mobileglobe.android.customdialer.R;
+import com.mobileglobe.android.customdialer.database.FilteredNumberAsyncQueryHandler;
+import com.mobileglobe.android.customdialer.database.FilteredNumberAsyncQueryHandler.OnCheckBlockedListener;
+import com.mobileglobe.android.customdialer.filterednumber.BlockNumberDialogFragment;
+import com.mobileglobe.android.customdialer.logging.InteractionEvent;
+import com.mobileglobe.android.customdialer.logging.Logger;
+import com.mobileglobe.android.customdialer.widget.SearchEditTextLayout;
 
 public class BlockedListSearchFragment extends RegularSearchFragment
         implements BlockNumberDialogFragment.Callback {
