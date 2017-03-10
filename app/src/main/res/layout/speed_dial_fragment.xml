@@ -28,7 +28,7 @@
         android:layout_alignParentLeft="true"
         android:paddingStart="@dimen/favorites_row_start_padding"
         android:paddingEnd="@dimen/favorites_row_end_padding" >
-        <com.android.dialer.list.PhoneFavoriteListView
+        <com.mobileglobe.android.customdialer.list.PhoneFavoriteListView
             android:id="@+id/contact_tile_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

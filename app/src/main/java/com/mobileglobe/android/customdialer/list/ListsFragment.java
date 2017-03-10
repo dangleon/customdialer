@@ -57,11 +57,14 @@ public class ListsFragment extends Fragment
     private static final String TAG = "ListsFragment";
 
     public static final int TAB_INDEX_SPEED_DIAL = 0;
-    public static final int TAB_INDEX_HISTORY = 1;
-    public static final int TAB_INDEX_ALL_CONTACTS = 2;
+    //public static final int TAB_INDEX_HISTORY = 1;
+    public static final int TAB_INDEX_HISTORY = 2;
+    public static final int TAB_INDEX_ALL_CONTACTS = 1;
+    //public static final int TAB_INDEX_ALL_CONTACTS = 2;
     public static final int TAB_INDEX_VOICEMAIL = 3;
 
-    public static final int TAB_COUNT_DEFAULT = 3;
+    //public static final int TAB_COUNT_DEFAULT = 3;
+    public static final int TAB_COUNT_DEFAULT = 2;
     public static final int TAB_COUNT_WITH_VOICEMAIL = 4;
 
     public interface HostInterface {
@@ -100,7 +103,7 @@ public class ListsFragment extends Fragment
 
         public ViewPagerAdapter(FragmentManager fm) {
             super(fm);
-            for (int i = 0; i < TAB_COUNT_WITH_VOICEMAIL; i++) {
+            for (int i = 0; i < TAB_COUNT_DEFAULT; i++) {
                 mFragments.add(null);
             }
         }
