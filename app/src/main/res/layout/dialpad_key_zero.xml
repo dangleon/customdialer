@@ -16,7 +16,7 @@
 
 <!-- A layout representing the zero key in the dialpad, with the plus sign shifted up because it is
      smaller than a regular letter -->
-<com.android.phone.common.dialpad.DialpadKeyButton
+<com.mobileglobe.android.customdialer.common.dialpad.DialpadKeyButton
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/zero"
     style="@style/DialpadKeyButtonStyle" >
@@ -26,7 +26,7 @@
         <!-- Note in the referenced styles that we assign hard widths to these components
              because we want them to line up vertically when we arrange them in an MxN grid -->
 
-        <com.android.phone.common.dialpad.DialpadTextView
+        <com.mobileglobe.android.customdialer.common.dialpad.DialpadTextView
             android:id="@+id/dialpad_key_number"
             style="@style/DialpadBottomKeyNumberStyle" />
 
@@ -34,4 +34,4 @@
             android:id="@+id/dialpad_key_letters"
             style="@style/DialpadKeyLettersStyle" />
     </LinearLayout>
-</com.android.phone.common.dialpad.DialpadKeyButton>
+</com.mobileglobe.android.customdialer.common.dialpad.DialpadKeyButton>

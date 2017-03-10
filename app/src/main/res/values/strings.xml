@@ -902,11 +902,11 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
 
     <!-- Application name used in Settings/Apps. Default label for activities
      that don't specify a label. -->
-    <string name="applicationLabel">Phone</string>
+    <string name="applicationLabel">Danew Dialer</string>
 
     <!-- Title for the activity that dials the phone.  This is the name
          used in the Launcher icon. -->
-    <string name="launcherActivityLabel">Phone</string>
+    <string name="launcherActivityLabel">Danew Dialer</string>
 
 
     <!-- Title for the activity that dials the phone, when launched directly into the dialpad -->
@@ -917,7 +917,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
     This is especially valuable for views without textual representation like ImageView.
 
     [CHAR LIMIT=NONE] -->
-    <string name="dialerIconLabel">Phone</string>
+    <string name="dialerIconLabel">Danew Dialer</string>
 
     <!-- The description text for the call log tab.
 

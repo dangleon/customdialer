@@ -16,7 +16,7 @@
 <view
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/contact_tile"
-    class="com.android.dialer.list.PhoneFavoriteSquareTileView"
+    class="com.mobileglobe.android.customdialer.list.PhoneFavoriteSquareTileView"
     android:paddingEnd="@dimen/contact_tile_divider_width"
     android:paddingBottom="@dimen/contact_tile_divider_width">
 
@@ -27,7 +27,7 @@
         android:focusable="true"
         android:nextFocusRight="@+id/contact_tile_secondary_button">
 
-        <com.android.contacts.common.widget.LayoutSuppressingImageView
+        <com.mobileglobe.android.customdialer.common.widget.LayoutSuppressingImageView
             android:id="@+id/contact_tile_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

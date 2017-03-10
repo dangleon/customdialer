@@ -16,6 +16,8 @@
 
 package com.mobileglobe.android.customdialer.list;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -24,9 +26,13 @@ import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.QuickContact;
+import android.provider.Settings;
+import android.support.v13.app.ActivityCompat;
 import android.support.v13.app.FragmentCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +60,7 @@ public class AllContactsFragment extends ContactEntryListFragment<ContactEntryLi
         implements OnEmptyViewActionButtonClickedListener,
         FragmentCompat.OnRequestPermissionsResultCallback {
 
+    public final static int REQUEST_CODE = 10101;
     private static final int READ_CONTACTS_PERMISSION_REQUEST_CODE = 1;
 
     private EmptyContentView mEmptyListView;
@@ -168,6 +175,30 @@ public class AllContactsFragment extends ContactEntryListFragment<ContactEntryLi
         // Do nothing. Implemented to satisfy ContactEntryListFragment.
     }
 
+    public boolean checkDrawOverlayPermission() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return true;
+        }
+        if (!Settings.canDrawOverlays(getActivity())) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:" + getActivity().getPackageName()));
+            startActivityForResult(intent, REQUEST_CODE);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    @TargetApi(Build.VERSION_CODES.M)
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            if (Settings.canDrawOverlays(getActivity())) {
+                //getActivity().startService(new Intent(this, PowerButtonService.class));
+            }
+        }
+    }
+
     @Override
     public void onEmptyViewActionButtonClicked() {
         final Activity activity = getActivity();
@@ -175,6 +206,36 @@ public class AllContactsFragment extends ContactEntryListFragment<ContactEntryLi
             return;
         }
 
+        if (!checkDrawOverlayPermission())
+        {
+            return;
+        }
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(activity,
+                Manifest.permission.READ_CONTACTS)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(activity,
+                    Manifest.permission.READ_CONTACTS)) {
+
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(activity,
+                        new String[]{Manifest.permission.READ_CONTACTS},
+                        READ_CONTACTS_PERMISSION_REQUEST_CODE);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
         if (!PermissionsUtil.hasPermission(activity, READ_CONTACTS)) {
           FragmentCompat.requestPermissions(this, new String[] {READ_CONTACTS},
               READ_CONTACTS_PERMISSION_REQUEST_CODE);
