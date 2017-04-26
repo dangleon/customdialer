@@ -50,7 +50,9 @@
             android:scaleType="center"
             android:clickable="true"
             android:contentDescription="@string/description_start_voice_search"
-            />
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:tint="@color/searchbox_icon_tint" />
+
 
     </LinearLayout>
 

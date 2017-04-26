@@ -17,14 +17,11 @@ package com.mobileglobe.android.customdialer.logging;
 
 import android.text.TextUtils;
 
-import com.mobileglobe.android.customdialer.common.dialog.ClearFrequentsDialog;
+import com.mobileglobe.android.customdialer.dialpad.DialpadFragment;
 import com.mobileglobe.android.customdialer.filterednumber.BlockedNumbersFragment;
-import com.mobileglobe.android.customdialer.list.AllContactsFragment;
 import com.mobileglobe.android.customdialer.list.BlockedListSearchFragment;
 import com.mobileglobe.android.customdialer.list.RegularSearchFragment;
 import com.mobileglobe.android.customdialer.list.SmartDialSearchFragment;
-import com.mobileglobe.android.customdialer.list.SpeedDialFragment;
-import com.mobileglobe.android.customdialer.dialpad.DialpadFragment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,49 +40,12 @@ public class ScreenEvent {
     // The dialpad in the main Dialer activity
     public static final int DIALPAD = 1;
 
-    // The speed dial tab in the main Dialer activity
-    public static final int SPEED_DIAL = 2;
-
-    // The recents tab in the main Dialer activity
-    public static final int CALL_LOG = 3;
-
-    // The voicemail tab in the main Dialer activity
-    public static final int VOICEMAIL_LOG = 4;
-
-    // The all contacts tab in the main Dialer activity
-    public static final int ALL_CONTACTS = 5;
 
     // List of search results returned by typing into the search box.
     public static final int REGULAR_SEARCH = 6;
 
     // List of search results returned by typing into the dialpad.
     public static final int SMART_DIAL_SEARCH = 7;
-
-    // The All and Missed call log tabs in CallLogActivity
-    public static final int CALL_LOG_FILTER = 8;
-
-    // Dialer settings screen.
-    public static final int SETTINGS = 9;
-
-    // The "Import/export contacts" dialog launched via the overflow menu.
-    public static final int IMPORT_EXPORT_CONTACTS = 10;
-
-    // The "Clear frequents" dialog launched via the overflow menu.
-    public static final int CLEAR_FREQUENTS = 11;
-
-    // The "Send feedback" dialog launched via the overflow menu.
-    public static final int SEND_FEEDBACK = 12;
-
-    // The main in call screen that displays caller details and contact photos
-    public static final int INCALL = 13;
-
-    // The screen that displays the glowpad widget (slide right to answer,
-    // slide left to dismiss).
-    public static final int INCOMING_CALL = 14;
-
-    // Conference management fragment displayed for conferences that support
-    // management of individual calls within the conference.
-    public static final int CONFERENCE_MANAGEMENT = 15;
 
     // The dialpad displayed in-call that is used to send dtmf tones.
     public static final int INCALL_DIALPAD = 16;
@@ -103,15 +63,10 @@ public class ScreenEvent {
     static {
         sScreenNameMap.put(ScreenEvent.DIALPAD,
                 getScreenNameWithTag(DialpadFragment.class.getSimpleName(), "Dialer"));
-        sScreenNameMap.put(ScreenEvent.SPEED_DIAL, SpeedDialFragment.class.getSimpleName());
-        sScreenNameMap.put(ScreenEvent.ALL_CONTACTS, AllContactsFragment.class.getSimpleName());
         sScreenNameMap.put(ScreenEvent.REGULAR_SEARCH,
                 RegularSearchFragment.class.getSimpleName());
         sScreenNameMap.put(ScreenEvent.SMART_DIAL_SEARCH,
                 SmartDialSearchFragment.class.getSimpleName());
-        sScreenNameMap.put(ScreenEvent.CLEAR_FREQUENTS,
-                ClearFrequentsDialog.class.getSimpleName());
-        sScreenNameMap.put(ScreenEvent.SEND_FEEDBACK, "SendFeedback");
         sScreenNameMap.put(ScreenEvent.INCALL_DIALPAD,
                 getScreenNameWithTag(DialpadFragment.class.getSimpleName(), "InCall"));
         sScreenNameMap.put(ScreenEvent.CALL_LOG_CONTEXT_MENU, "CallLogContextMenu");

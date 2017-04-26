@@ -69,15 +69,6 @@ public class TelecomUtil {
         }
     }
 
-    public static void cancelMissedCallsNotification(Context context) {
-        if (hasModifyPhoneStatePermission(context)) {
-            try {
-                getTelecomManager(context).cancelMissedCallsNotification();
-            } catch (SecurityException e) {
-                Log.w(TAG, "TelecomManager.cancelMissedCalls called without permission.");
-            }
-        }
-    }
 
     public static Uri getAdnUriForPhoneAccount(Context context, PhoneAccountHandle handle) {
         if (hasModifyPhoneStatePermission(context)) {

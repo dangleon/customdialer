@@ -151,7 +151,6 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
         public static final int PHOTO_ID                = 6;
         public static final int DISPLAY_NAME            = 7;
         public static final int PHOTO_URI               = 8;
-        public static final int CARRIER_PRESENCE        = 9;
     }
 
     private static final String IGNORE_NUMBER_TOO_LONG_CLAUSE =
@@ -184,9 +183,6 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
             mExtendedDirectories = new ArrayList<DirectoryPartition>();
         }
 
-        int videoCapabilities = CallUtil.getVideoCallingAvailability(context);
-        mIsVideoEnabled = (videoCapabilities & CallUtil.VIDEO_CALLING_ENABLED) != 0;
-        mIsPresenceEnabled = (videoCapabilities & CallUtil.VIDEO_CALLING_PRESENCE) != 0;
     }
 
     protected CharSequence getUnknownNameText() {
@@ -493,8 +489,7 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
 
         if (CompatUtils.isVideoCompatible()) {
             // Determine if carrier presence indicates the number supports video calling.
-            int carrierPresence = cursor.getInt(PhoneQuery.CARRIER_PRESENCE);
-            boolean isPresent = (carrierPresence & Phone.CARRIER_PRESENCE_VT_CAPABLE) != 0;
+            boolean isPresent = Phone.CARRIER_PRESENCE_VT_CAPABLE != 0;
 
             boolean isVideoIconShown = mIsVideoEnabled && (
                     mIsPresenceEnabled && isPresent || !mIsPresenceEnabled);

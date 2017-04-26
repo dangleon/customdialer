@@ -50,19 +50,8 @@
             android:scaleType="center"
             android:clickable="true"
             android:contentDescription="@string/description_start_voice_search"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:tint="@color/searchbox_icon_tint" />
+            />
 
-        <ImageButton
-            android:id="@+id/dialtacts_options_menu_button"
-            android:layout_width="@dimen/search_box_icon_size"
-            android:layout_height="match_parent"
-            android:paddingEnd="@dimen/search_box_right_padding"
-            android:scaleType="center"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_overflow_menu"
-            android:contentDescription="@string/action_menu_overflow_description"
-            android:tint="@color/searchbox_icon_tint" />
 
     </LinearLayout>
 
